@@ -1,0 +1,23 @@
+Inside PHP or XML(PHP) file
+------------------------------------------------------------------------------------
+debug($op_finish,"op_finish","File: " . __FILE__ . " Line: " . __LINE__) ;
+
+After MySQL INSERT:
+------------------------------------------------------------------------------------
+if (! $do_record -> insert()) 
+  debug(getGlobalMsg()) ; 
+
+After MySQL INSERT with message:
+------------------------------------------------------------------------------------
+if (! $do_record -> insert()) 
+{
+  debug(getGlobalMsg(),"getGlobalMsg","File: " . __FILE__ . " Line: " . __LINE__) ; 
+  return Null ;
+} 
+After MySQL UPDATE with message:
+------------------------------------------------------------------------------------
+if (! $do_record -> update()) 
+{
+  debug(getGlobalMsg(),"getGlobalMsg","File: " . __FILE__ . " Line: " . __LINE__) ;
+  return Null ; 
+}
