@@ -1,0 +1,8 @@
+<?
+
+$customer_name = lookupColumnById("CUSTOMER","UID",#cur_record#['LNK_CUSTOMER'],"CUSTOMER_NAME") ;
+$origin .= " received from <strong>" 
+              . buildHRef($customer_name,"customer_view?customer_id=" . #cur_record#['LNK_CUSTOMER']) 
+              . "</strong>" ;
+              
+?>
