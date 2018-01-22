@@ -1,0 +1,10 @@
+<?php
+
+// Example for loopuprecord
+$matrix_rec = lookupRecordbyId("PRODUCT_MATRIX","UID",$prod_matrix_id
+                                        ,"MATRIX_NAME,MATRIX_DESC,LNK_PRODUCT_CAT,CAT_NAME") ;
+                                        
+                                        
+$params['prod_cat_id'] = $matrix_rec['LNK_PRODUCT_CAT'] ;
+
+?>
