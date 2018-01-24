@@ -2,3 +2,5 @@
 
 # Example of how to find the logs file from a particular date:
 # MapleTools/site/logs/2018-01-24/sys_object-2018-01-24.xml
+
+# At the bottom of this XML file the newest repository file should be located!
