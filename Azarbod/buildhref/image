@@ -1,0 +1,12 @@
+    <?php
+    // Build the URL around the image
+    $btn_upload_doc = "" ;
+    
+    $img = "<img src=\"/~images_folder~/icon_add.png\" title=\"Click to upload documents\" />" ;
+    $btn_upload_doc = buildHRef($img,"product_document_new?prod_matrix_id=" . $prod_matrix_id) ;
+    
+    
+    
+    $params['btn_upload_doc'] = $btn_upload_doc ;
+    
+    ?>
