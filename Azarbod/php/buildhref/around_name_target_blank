@@ -1,0 +1,12 @@
+<?php
+
+$params['event_type'] = $event_rec['TYPE_NAME'] ;
+
+// Traget Blank example:
+$params['event_link'] = buildHRef($event_id,"event_view?event_id=" . 
+              $event_id,'','target="_blank"') ;
+              
+// Traget Blank example:
+$params['customer_link'] = buildHRef($customer_name,"customer_view?customer_id=" . 
+                 $customer_id,'','target="_blank"') ;
+?>                 
