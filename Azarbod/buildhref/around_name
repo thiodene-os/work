@@ -1,0 +1,11 @@
+<?php
+
+$matrix_body .= '<tr>
+                  <td>' . buildHRef($product_rec['PRODUCT_NAME'],'product_view?product_id=' . $product_id) . '</td>
+                  <td></td>
+                  <td></td>
+                  <td>' . buildHRef($sku,'product_view?product_id=' . $product_id) . '</td>
+                </tr>' ;
+
+
+?>
