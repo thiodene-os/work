@@ -1,0 +1,37 @@
+<?php
+
+// Used when redirecting after checkout
+$params['view_checkout_url'] = buildHRef("","mb_liquor_checkout_view?liquor_checkout_id=%liquor_checkout_id%") ;
+
+?>
+
+/* Corresponding Javascript use:
+
+      <script type="text/javascript">
+        // This function complete the checkout session
+        // move the items from the cart to the liquor checkout items
+        
+        $(function()
+        {
+          // Click this button to CompleteLiquorCheckoutItems
+          $("#btn_complete_liquor_checkout").click(function()
+          {
+            
+            // Confirm completing the liquor checkout
+            if (! confirm("Complete the Checkout session?"))
+              return false ;
+            
+            // If there are no unsaved items and cart is not empty Complete Checkout
+            prog = 'completeLiquorCheckoutItems(' + %liquor_checkout_id% + ') ;' ;
+            
+            runBackEndProg(prog,null,'window.location.href = "%view_checkout_url%" ;') ;
+            
+            return false ;
+            
+          });
+          
+        }) ; // completeLiquorCheckoutItems
+        
+      </script>
+
+*/
