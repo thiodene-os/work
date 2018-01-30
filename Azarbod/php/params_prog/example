@@ -1,0 +1,23 @@
+// Setting up a params_prog variable in PHP
+// --------------------------------------------------------------------
+// Direct parent for Category SQL Query
+$top_cat_query = 'IS NULL' ;
+$params['top_cat_query'] =  $top_cat_query ;
+
+$home = buildHRef('HOME','index') ;
+$params['bread_crumb'] =  $home . ' > Products' ;
+
+$params['prod_cat_name'] = 'Products' ;
+
+
+
+
+// Use the params_prog variable with %----% in HTML
+// --------------------------------------------------------------------
+<h1>%prod_cat_name%</h1>
+<br />
+%matrices%
+<br />
+#form_body#
+
+<div>#page_navigator#</div>
