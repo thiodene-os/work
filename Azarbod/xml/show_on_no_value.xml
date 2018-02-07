@@ -1,0 +1,6 @@
+<scr_elm elm_id="po_short_list_lnk_supplier">
+  <show_on_no_value>~def_show_on_no_value~</show_on_no_value>
+  <editable>Yes</editable>
+  <display_attributes>class="supplier_id"</display_attributes>
+  <layout><![CDATA[#element#]]></layout>
+</scr_elm>
