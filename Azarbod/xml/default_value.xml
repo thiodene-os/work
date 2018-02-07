@@ -1,0 +1,5 @@
+<scr_elm elm_id="sales_order_order_date">
+  <label>Received On</label>
+  <default_value>~today~</default_value>            
+</scr_elm>
+<format_item><![CDATA[</div>]]></format_item>
