@@ -1,3 +1,5 @@
+# Decimal
+
 <scr_elm elm_id="product_gen_qty_on_hand">
   <format>decimal(%decimal_points%)</format>
   <layout><![CDATA[#element#]]></layout>
@@ -11,3 +13,11 @@ if (! is_null(#cur_record#['PRODUCT_ID']))
   $decimal_points = lookupColumnById("PRODUCT_GEN","UID",#cur_record#['PRODUCT_ID'],"DECIMAL_POINTS") ;
 $params['decimal_points'] = $decimal_points ;
 ?>
+
+# General Number
+
+<format_item><![CDATA[</td><td style="text-align: center;">]]></format_item>
+<scr_elm elm_id="product_gen_qty_on_hand">
+  <format>general_number</format>
+  <layout><![CDATA[#element#]]></layout>
+</scr_elm>
