@@ -1,0 +1,13 @@
+<scr_elm elm_id="product_gen_qty_on_hand">
+  <format>decimal(%decimal_points%)</format>
+  <layout><![CDATA[#element#]]></layout>
+</scr_elm>
+
+<?php
+//PHP Part
+// Put decimal points
+$decimal_points = ~default_decimal_points_for_qtys~ ;
+if (! is_null(#cur_record#['PRODUCT_ID']))
+  $decimal_points = lookupColumnById("PRODUCT_GEN","UID",#cur_record#['PRODUCT_ID'],"DECIMAL_POINTS") ;
+$params['decimal_points'] = $decimal_points ;
+?>
