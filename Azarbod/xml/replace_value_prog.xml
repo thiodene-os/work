@@ -1,0 +1,16 @@
+<scr_elm elm_id="inv_count_item_qty_expected">
+  <replace_value_prog><![CDATA[
+    // Show how many full packages and how many singles on hand
+    $do_replace_value = true ;
+    $replace_value_result = round(#value#) ;
+
+    if (#cur_record#['PACKAGE_CAPACITY'] > 1)
+    {
+      // Find how many full package and how many singles only if package is not sigle
+      $full_packs = floor(#value# / #cur_record#['PACKAGE_CAPACITY']) ;
+      $singles = #value# % #cur_record#['PACKAGE_CAPACITY'] ;
+      $replace_value_result .= ' (' . $full_packs . ' / ' . $singles . ')' ;
+    }
+  ]]></replace_value_prog>
+  <layout><![CDATA[</td><td class="ralign"><span class="qty_expected a_count" qty_expected="#cur_record#%QTY_EXPECTED%">#element#</span>]]></layout>
+</scr_elm> 
