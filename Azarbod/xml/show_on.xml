@@ -1,0 +1,8 @@
+<action_elm elm_id="action_delete">
+  <show_on><![CDATA[
+    $show_on_result = (%lq_checkout_status% == LIQUOR_CHECKOUT_STATUS_PREPARATION) ;
+  ]]></show_on>
+  <label>Delete Checkout</label>
+  <do_after><page_id>liquor_checkout</page_id></do_after>
+  <message_after>Liquor Checkout Was deleted.</message_after>
+</action_elm>
