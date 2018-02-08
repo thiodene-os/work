@@ -1,0 +1,6 @@
+<format_item><![CDATA[<tr class="actual_body"><td>]]></format_item>
+<scr_elm elm_id="product_cat_cat_name">
+  <linked_to>pub_product_catalogue_view?prod_cat_id=#cur_record#%PROD_CAT_ID%</linked_to>
+  <layout><![CDATA[#element#]]></layout>
+</scr_elm>
+<format_item><![CDATA[</td></tr>]]></format_item>
