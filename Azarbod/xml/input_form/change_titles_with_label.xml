@@ -1,0 +1,28 @@
+    <form_body>
+      <scr_section>form_body</scr_section>
+        <format_item><![CDATA[]]></format_item>
+        <scr_elm elm_id="customer_contact_first_name">
+        <label>First Name</label>
+        </scr_elm>
+        <format_item><![CDATA[]]></format_item>
+        <scr_elm elm_id="customer_contact_last_name">
+        <label>Last Name</label>
+        </scr_elm>
+        <format_item><![CDATA[]]></format_item>
+        <scr_elm elm_id="customer_main_email">
+        <label>Email</label>
+        </scr_elm>
+        <format_item><![CDATA[]]></format_item>
+        <scr_elm elm_id="customer_customer_name">
+        <label>Company</label>
+        </scr_elm>
+        <format_item><![CDATA[]]></format_item>
+        <scr_elm elm_id="customer_main_phone">
+        <label>Phone</label>
+        </scr_elm>
+        <format_item><![CDATA[]]></format_item>
+        <scr_elm elm_id="customer_contact_contact_notes">
+        <label>Message</label>
+        </scr_elm>
+        <format_item><![CDATA[]]></format_item>
+    </form_body>
