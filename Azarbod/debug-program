@@ -21,3 +21,16 @@ if (! $do_record -> update())
   debug(getGlobalMsg(),"getGlobalMsg","File: " . __FILE__ . " Line: " . __LINE__) ;
   return Null ; 
 }
+
+Debug Javascript content with "Errors" and "Logs": console.log
+------------------------------------------------------------------------------------
+<script type="text/javascript">
+  var itin_json    = '%itin_json%' ;
+  var itin_obj = JSON.parse(itin_json) ;
+
+  console.log(itin_obj) ; // debug alert
+
+  // Parse the JSON and go through all the page options
+  $("[azbd_type]").each(function()
+  {
+    azbd_type = $(this).attr("azbd_type") ;
