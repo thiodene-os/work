@@ -1,0 +1,558 @@
+<itinerary>
+  <params_prog>
+    $event_id = lookupColumnById("ITINERARY","UID",%itin_id%,"LNK_EVENT") ;
+    $params['event_id'] = $event_id ;
+    
+    // Also fetch the event rec to be used by other programs
+    $GLOBALS['event_rec'] = lookupColumnById("EVENT","UID",$event_id
+                                              ,"ADULTS,KIDS,BABIES,PROS,LNK_EVENT_TYPE
+                                                ,START_DATE_TIME, LNK_CUSTOMER, LNK_CUSTOMER_CONTACT") ;
+  </params_prog>
+  <itin_items>
+    <itin_item id="event_type">
+      <desc>Type of this event like Wedding Reception</desc> 
+      <item_value>
+        $itin_item_result = lookupColumnById("EVENT_TYPE","UID",$GLOBALS['event_rec']['LNK_EVENT_TYPE'],"TYPE_NAME") ;
+      </item_value>
+    </itin_item>
+    <itin_item id="event_date">
+      <desc>Date of the event like  Saturday February 24, 2018</desc> 
+      <item_value>
+        $itin_item_result = date("l F j, Y",strtotime($GLOBALS['event_rec']['START_DATE_TIME'])) ;
+      </item_value>
+    </itin_item>
+    <itin_item id="event_start_time">
+      <desc>Start time only of the event like 04:00PM</desc> 
+      <item_value>
+        $itin_item_result = date("h:iA",strtotime($GLOBALS['event_rec']['START_DATE_TIME'])) ;
+      </item_value>
+    </itin_item>
+    <itin_item id="two_weeks_before_event">
+      <desc>Two weeks before the event date</desc> 
+      <item_value>
+        $two_weeks_before = dateAdd(substr($GLOBALS['event_rec']['START_DATE_TIME'],0,DATE_STR_LEN),-14) ;
+        $itin_item_result = date("l F j, Y",strtotime($two_weeks_before)) ;
+      </item_value>
+    </itin_item>
+    <itin_item id="event_rooms">
+      <desc>List of all rooms with the ones been booked for this event, highlighted.</desc> 
+      <item_value><![CDATA[
+        /*
+        // Find all the facilities and show the ones that are in this event as checked
+        $sql_str = "SELECT  FACILITY.FACILITY_NAME 
+                          , EVENT_F.START_DATE_TIME 
+                          , EVENT_F.END_DATE_TIME
+                              FROM FACILITY 
+                        LEFT JOIN (SELECT * FROM EVENT_FACILITY WHERE LNK_EVENT = %event_id%) EVENT_F 
+                          ON EVENT_F.LNK_FACILITY = FACILITY.UID";
+        $qry = new dbQuery($sql_str,"File: " . __FILE__ . " LINE " . __LINE__) ;
+        $facility_recs = $qry -> getRecords() ;
+        unset($qry) ;
+
+        $rooms = '' ;
+        foreach($facility_recs as $facility_rec)
+        {
+          $rooms .= '<span class="option' ;
+          // If this room is in this event, then add a checkmark using font-awesome
+          if (! is_null($facility_rec['START_DATE_TIME']))
+            $rooms .= ' selected"><i class="fas fa-check"></i>' ;
+          else
+            $rooms .= '">' ;
+          $rooms .= $facility_rec['FACILITY_NAME'] . '</span>' ;
+        }
+        $itin_item_result = $rooms ;
+        */
+        
+        // Find all the facilities and show the ones that are in this event as checked
+        $rooms = '' ;
+        $room_list = buildEventRoomsNoBreak(%event_id%) ;
+        $room_array = explode (' | ', $room_list) ;
+        foreach ($room_array as $event_room)
+        {
+          $rooms .= '<span class="option' ;
+          $rooms .= ' selected"><i class="fas fa-check"></i>' ;
+          $rooms .= $event_room . '</span>' ;
+        }
+        $itin_item_result = $rooms ;
+        
+      ]]></item_value>
+    </itin_item>
+    <itin_item id="event_room">
+      <desc>Only the room or rooms that have been booked for this event.</desc> 
+      <item_value><![CDATA[$itin_item_result = buildEventRooms4Screen(%event_id%) ;]]></item_value>
+    </itin_item>
+    <itin_item id="num_adults">
+      <desc>Number of adults of the event.</desc> 
+      <item_value><![CDATA[
+        $itin_item_result = $GLOBALS['event_rec']['ADULTS'] ;
+      ]]></item_value>
+    </itin_item>
+    <itin_item id="num_children">
+      <desc>Number of children of the event.</desc> 
+      <item_value><![CDATA[
+        $itin_item_result = $GLOBALS['event_rec']['KIDS'] ;
+      ]]></item_value>
+    </itin_item>
+    <itin_item id="num_babies">
+      <desc>Number of babies of the event.</desc> 
+      <item_value><![CDATA[
+        $itin_item_result = $GLOBALS['event_rec']['BABIES'] ;
+      ]]></item_value>
+    </itin_item>
+    <itin_item id="num_pros">
+      <desc>Number of guest professional of the event.</desc> 
+      <item_value><![CDATA[
+        $itin_item_result = $GLOBALS['event_rec']['PROS'] ;
+      ]]></item_value>
+    </itin_item>
+    <itin_item id="total_guests">
+      <desc>Total number of guests in the event.</desc> 
+      <item_value><![CDATA[
+        $itin_item_result = $GLOBALS['event_rec']['ADULTS']
+                            + $GLOBALS['event_rec']['KIDS'] 
+                            + $GLOBALS['event_rec']['BABIES'] 
+                            + $GLOBALS['event_rec']['PROS'] ;
+      ]]></item_value>
+    </itin_item>
+    <itin_item id="bride_name">
+      <desc>The Bride Name.</desc> 
+      <item_value><![CDATA[
+        // Select the Customer Contact that may be a Bride from LNK CUSTOMER
+        // relation of CU_CONTACT_RELATION_BRIDE
+        $sql_str = "SELECT FIRST_NAME, LAST_NAME, CUSTOMER_CONTACT.UID AS CONTACT_ID 
+                    FROM CUSTOMER_CONTACT 
+                    WHERE CUSTOMER_CONTACT.LNK_CUSTOMER = " . $GLOBALS['event_rec']['LNK_CUSTOMER'] 
+                  . " AND CUSTOMER_CONTACT.RELATION = " . CU_CONTACT_RELATION_BRIDE ;
+        $qry = new dbQuery($sql_str,"File: " . __FILE__ . " LINE " . __LINE__) ;
+        $contact_rec = $qry -> getRecord() ;
+        $contact_rec_count = $qry -> getCount() ;
+        unset($qry) ;
+        
+        if ($contact_rec_count > 0)
+        {
+          // Full name of the Bride
+          $itin_item_result = $contact_rec['FIRST_NAME'] . ' ' . $contact_rec['LAST_NAME'] ;
+        }
+        else
+          $itin_item_result = '' ;
+        
+      ]]></item_value>
+    </itin_item>
+    <itin_item id="bride_phone">
+      <desc>The Bride Phone.</desc> 
+      <item_value><![CDATA[
+        // Select the Customer Contact that may be a Bride from LNK CUSTOMER
+        // relation of CU_CONTACT_RELATION_BRIDE
+        $sql_str = "SELECT PHONE, CUSTOMER_CONTACT.UID AS CONTACT_ID 
+                    FROM CUSTOMER_CONTACT 
+                    WHERE CUSTOMER_CONTACT.LNK_CUSTOMER = " . $GLOBALS['event_rec']['LNK_CUSTOMER'] 
+                  . " AND CUSTOMER_CONTACT.RELATION = " . CU_CONTACT_RELATION_BRIDE ;
+        $qry = new dbQuery($sql_str,"File: " . __FILE__ . " LINE " . __LINE__) ;
+        $contact_rec = $qry -> getRecord() ;
+        $contact_rec_count = $qry -> getCount() ;
+        unset($qry) ;
+        
+        if ($contact_rec_count > 0)
+        {
+          // Full name of the Bride
+          $itin_item_result = $contact_rec['PHONE'] ;
+        }
+        else
+          $itin_item_result = '' ;
+        
+      ]]></item_value>
+    </itin_item>
+    <itin_item id="bride_cell">
+      <desc>The Bride Cell Phone.</desc> 
+      <item_value><![CDATA[
+        // Select the Customer Contact that may be a Bride from LNK CUSTOMER
+        // relation of CU_CONTACT_RELATION_BRIDE
+        $sql_str = "SELECT CELL_PHONE, CUSTOMER_CONTACT.UID AS CONTACT_ID 
+                    FROM CUSTOMER_CONTACT 
+                    WHERE CUSTOMER_CONTACT.LNK_CUSTOMER = " . $GLOBALS['event_rec']['LNK_CUSTOMER'] 
+                  . " AND CUSTOMER_CONTACT.RELATION = " . CU_CONTACT_RELATION_BRIDE ;
+        $qry = new dbQuery($sql_str,"File: " . __FILE__ . " LINE " . __LINE__) ;
+        $contact_rec = $qry -> getRecord() ;
+        $contact_rec_count = $qry -> getCount() ;
+        unset($qry) ;
+        
+        if ($contact_rec_count > 0)
+        {
+          // Full name of the Bride
+          $itin_item_result = $contact_rec['CELL_PHONE'] ;
+        }
+        else
+          $itin_item_result = '' ;
+
+      ]]></item_value>
+    </itin_item>
+    <itin_item id="groom_name">
+      <desc>The Groom Name.</desc> 
+      <item_value><![CDATA[
+        // Select the Customer Contact that may be a Groom from LNK CUSTOMER
+        // relation of CU_CONTACT_RELATION_GROOM
+        $sql_str = "SELECT FIRST_NAME, LAST_NAME, CUSTOMER_CONTACT.UID AS CONTACT_ID 
+                    FROM CUSTOMER_CONTACT 
+                    WHERE CUSTOMER_CONTACT.LNK_CUSTOMER = " . $GLOBALS['event_rec']['LNK_CUSTOMER'] 
+                  . " AND CUSTOMER_CONTACT.RELATION = " . CU_CONTACT_RELATION_GROOM ;
+        $qry = new dbQuery($sql_str,"File: " . __FILE__ . " LINE " . __LINE__) ;
+        $contact_rec = $qry -> getRecord() ;
+        $contact_rec_count = $qry -> getCount() ;
+        unset($qry) ;
+        
+        if ($contact_rec_count > 0)
+        {
+          // Full name of the Bride
+          $itin_item_result = $contact_rec['FIRST_NAME'] . ' ' . $contact_rec['LAST_NAME'] ;
+        }
+        else
+          $itin_item_result = '' ;
+        
+        
+      ]]></item_value>
+    </itin_item>
+    <itin_item id="groom_phone">
+      <desc>The Groom Phone.</desc> 
+      <item_value><![CDATA[
+        
+        // Select the Customer Contact that may be a Groom from LNK CUSTOMER
+        // relation of CU_CONTACT_RELATION_GROOM
+        $sql_str = "SELECT PHONE, CUSTOMER_CONTACT.UID AS CONTACT_ID 
+                    FROM CUSTOMER_CONTACT 
+                    WHERE CUSTOMER_CONTACT.LNK_CUSTOMER = " . $GLOBALS['event_rec']['LNK_CUSTOMER'] 
+                  . " AND CUSTOMER_CONTACT.RELATION = " . CU_CONTACT_RELATION_GROOM ;
+        $qry = new dbQuery($sql_str,"File: " . __FILE__ . " LINE " . __LINE__) ;
+        $contact_rec = $qry -> getRecord() ;
+        $contact_rec_count = $qry -> getCount() ;
+        unset($qry) ;
+        
+        if ($contact_rec_count > 0)
+        {
+          // Full name of the Bride
+          $itin_item_result = $contact_rec['PHONE'] ;
+        }
+        else
+          $itin_item_result = '' ;
+        
+      ]]></item_value>
+    </itin_item>
+    <itin_item id="groom_cell">
+      <desc>The Groom Cell Phone.</desc> 
+      <item_value><![CDATA[
+        // Select the Customer Contact that may be a Groom from LNK CUSTOMER
+        // relation of CU_CONTACT_RELATION_GROOM
+        $sql_str = "SELECT CELL_PHONE, CUSTOMER_CONTACT.UID AS CONTACT_ID 
+                    FROM CUSTOMER_CONTACT 
+                    WHERE CUSTOMER_CONTACT.LNK_CUSTOMER = " . $GLOBALS['event_rec']['LNK_CUSTOMER'] 
+                  . " AND CUSTOMER_CONTACT.RELATION = " . CU_CONTACT_RELATION_GROOM ;
+        $qry = new dbQuery($sql_str,"File: " . __FILE__ . " LINE " . __LINE__) ;
+        $contact_rec = $qry -> getRecord() ;
+        $contact_rec_count = $qry -> getCount() ;
+        unset($qry) ;
+        
+        if ($contact_rec_count > 0)
+        {
+          // Full name of the Bride
+          $itin_item_result = $contact_rec['CELL_PHONE'] ;
+        }
+        else
+          $itin_item_result = '' ;
+
+      ]]></item_value>
+    </itin_item>
+  </itin_items>
+  <layout><![CDATA[
+    <h1>Event Details: #event_type#</h1>
+    <h2>Please call to book your final meeting for the week of 
+      #two_weeks_before_event#</h2>
+    <p><label>Event #: %event_id%</label>  
+      #event_date# <label>Time of the Event:</label> #event_start_time#</p>
+    <p><label>Date of the Event:</label>  
+      #event_date# <label>Time of the Event:</label> #event_start_time#</p>
+    <p><label>Room:</label> #event_rooms#</p>
+    
+    <p class="bg_info_wrap"><label>Name of Bride:</label> 
+      <input id="bride_name" type="text" maxlen="80" def_value="#bride_name#" allow_edit="if_empty" />
+      <span>Phone: (H) <input id="bride_phone" type="phone" def_value="#bride_phone#" allow_edit="if_empty" /></span>
+      <br />  
+      <span>
+        (C) <input id="bride_cell" type="phone" def_value="#bride_cell#" allow_edit="if_empty" /></span>
+    </p>
+    
+    <p class="bg_info_wrap"><label>Name of Groom:</label> 
+      <input id="groom_name" type="text" maxlen="80" def_value="#groom_name#" allow_edit="if_empty" />
+      <span>Phone: (H) <input id="groom_phone" type="phone" def_value="#groom_phone#" allow_edit="if_empty" /></span>
+      <br /><span>(C) 
+        <input id="groom_cell" type="phone" def_value="#groom_cell#" allow_edit="if_empty" /></span>
+    </p>
+   
+    <div id="guests_wrap">
+      <h1>Numbers</h1>
+      <p><label>Number of Adults:</label> #total_guests#</p>
+      <p><label>Number of Children (4-10):</label> #num_children#</p>
+      <p><label>Number of Babies:</label> #num_babies#</p>
+      <p><label>Number of Guest Pros (DJ, Decorator, etc.):</label> #num_pros#</p>
+      <p><label>Total Guests:</label> #total_guests#</p>
+      <p><strong>*This number must be provided 14 days in advance and will be billed*</strong></p>
+    </div>
+   
+    <h1>Arrivals</h1>
+    <p><label>Arrival time of Bride:</label> <input id="bride_arrive_time" type="time" /></p>
+    <p><label>Arrival time of Groom:</label> <input id="groom_arrive_time" type="time" /></p>
+    <p><label>Sign on the Door/Entrance:</label> <input id="door_sign" type="text" maxlen="60" /></p>
+    <p><label>Receiving line location:</label> <input id="receive_line_loc" type="text" maxlen="80" /></p>
+    <p><label>Name Cards:</label> <input id="name_cards" type="multi_option" options="Facing Helper;Facing Guest" /></p>
+    <p style="font-style: italic;">
+      *Please make sure name cards are in alphabetical order. RA recommends facing guests*</p>
+    
+    <h1>Reception</h1>  
+    <p><label>Bridal Suite:</label> <input id="bridal_suite" type="multi_option" options="East;West" /></p>
+    <p><label>Additional Room:</label> <input id="addt_room" type="text" maxlen="50" />
+        <label>To be used for:</label> <input id="addt_room_purpose" type="text" maxlen="40" /></p>
+    
+    <p><label>Are you having your ceremony here?</label> 
+        <input id="have_ceremony_here" type="yes_no" /></p>
+    <p show_on="#have_ceremony_here# == 'Yes'"><label>Do you have a decorator for the Gazebo?</label> 
+        <input id="have_gazebo_decorator" type="yes_no" /></p>
+    <div show_on="#have_ceremony_here# == 'Yes' && #have_gazebo_decorator# == 'Yes'">    
+      <p><label>Decorators contact info:</label> 
+          <br /><label>Name:</label> <input id="gazebo_decorator_name" type="text" maxlen="60" />
+          <br /><label>Email:</label> <input id="gazebo_decorator_email" type="email" />
+          <br /><label>Phone:</label> <input id="gazebo_decorator_phone" type="phone" />
+          <br /><label>Cell:</label> <input id="gazebo_decorator_cell" type="phone" /></p>
+      <p>
+        <label>Waht decorations are you providing for Gazebo?</label> 
+          <br />Please use one line for each item used
+          <input id="gazebo_decorations" type="multi_line" maxlen="60" empty_lines="3" /></p>
+    </div>  
+    
+    <div show_on="#have_ceremony_here# == 'Yes'">    
+      <h3>Please note: That your ceremony must start on time, and end on time within 
+      your ceremony time slot. If it does not, Royal Ambassador Reserves the right 
+      to switch your ceremony location, in order to accommodate the next ceremony 
+      scheduledstrong></h3>   
+    
+      <p><label>Back up Ceremony location if it rains 
+              (this will be determined 6 weeks prior to the function):</label>
+                <input id="ceremony_bakup_loc" type="text" maxlen="60" /></p>
+
+
+      <h3>The Royal Ambassador aims to exceed each guest's expectations.  In doing so, 
+      we have designed a special menu to meet most dietary requirements.  
+      Please see the attached menu.  Please ensure that you have indicated where 
+      those with special meal requests are seated on the floor plan</h3>
+    </div>  
+    
+    
+    <h1>Vendor Information</h1>    
+    <p>ALL VENDORS MUST PICK UP THEIR ITEMS AFTER YOUR EVENT - SAME DAY OR A $250 REMOVAL AND 
+    STORAGE FEE WILL APPLY. <strong>REMOVAL IS NO LATER THAN 2:00AM SAME DAY.</strong></p>
+    
+    <p>VENDORS MUST CONFIRM WITH ROYAL AMBASSADOR - EVENT DETAILING MANAGER TO CONFIRM WHEN 
+    THEY HAVE ACCESS TO THE ROOM DAY OF.</p> 
+
+    <p>VENDORS ARE RESPONSIBLE FOR REMOVAL OF GARBAGE AND EXTRA ITEMS.
+    PLEASE MAKE SURE TO RELAY ANY PERTAINANT INFORMATION TO EACH
+    OF YOUR VENDORS.</p>
+
+    <p><h3>Minister</h3>
+        <br /><label>Name:</label> <input id="minister_name" type="text" maxlen="60" />
+        <br /><label>Email:</label> <input id="minister_email" type="email" />
+        <br /><label>Phone:</label> <input id="minister_phone" type="phone" />
+        <br /><label>Cell:</label> <input id="minister_cell" type="phone" /></p>
+        
+    <p><h3>DJ and/or Band</h3>
+        <br /><label>Company:</label> <input id="dj_company_name" type="text" maxlen="60" />
+        <br /><label>Contact Name:</label> <input id="dj_contact_name" type="text" maxlen="120" />
+        <br /><label>Email:</label> <input id="dj_email" type="email" />
+        <br /><label>Phone:</label> <input id="dj_phone" type="phone" />
+        <br /><label>Arrival Time:</label> <input id="dj_arrival_time" type="time" /></p>
+        
+    <p><strong>Please contact Digital DJ for the rental of the screen and/or projectors, 
+    Speakers, Microphones – (905-264-1033) (additional fee)</p> 
+
+    <p>You will receive a stage that seats a maximum of 10 people.  Should you require 
+    additional staging for your head table and/or band please contact Scott at Pandor 
+    Productions 416-798-9293 (additional fee)</p>
+
+    <p><label>Do you need a podium?</label> <input id="need_a_podium" type="yes_no" />
+
+    <p><label>Is there any entertainment at your event? (I.e. dancers, bands, etc.)?</label>
+      <input id="entertain_at_event" type="yes_no" />
+    </p>
+
+    <p>Please note that entertainment cannot begin, or must be delayed if a ceremony is 
+    scheduled during this time. <strong>Speak to your Sales representative with regards to times 
+    your DJ and/or Entertainment are able to test equipment.</strong></p>
+
+
+    <p>If you have cocktail hour (stations, hors d'oeuvres, antipasto bar, etc), what time 
+    would you like this to commence? <input id="have_cocktail_hour" type="text" />
+    (please go over such timing with your event coordinator for approval)</p>
+
+    <p>What time would you like us to begin with your first course? 
+      <input id="first_course_time" type="time" />
+    (please go over such timing with your event coordinator for approval)</p>
+
+    <br />
+    <p>If you have a late night station or sweet table, what time would you 
+      like it to commence? <input id="night_station_time" type="time" />  
+      (please go over such timing with your event coordinator for approval)</p>
+      
+    <br />
+    <p><h3>Cake</h3>
+        <br /><label>Company:</label> <input id="cake_company_name" type="text" maxlen="60" />
+        <br /><label>Contact Name:</label> <input id="cake_contact_name" type="text" maxlen="120" />
+        <br /><label>Phone:</label> <input id="cake_phone" type="phone" />
+        <br /><label>Arrival Time:</label> <input id="cake_arrival_time" type="time" /></p>
+        
+    <br />
+    <p><h3>Florist</h3>
+        <br /><label>Company:</label> <input id="florist_company_name" type="text" maxlen="60" />
+        <br /><label>Contact Name:</label> <input id="florist_contact_name" type="text" maxlen="120" />
+        <br /><label>Phone:</label> <input id="florist_phone" type="phone" />
+        <br /><label>Arrival Time:</label> <input id="florist_arrival_time" type="time" /></p>
+        
+    <br />
+    <p><h3>Photographer / Videographer</h3>
+        <br /><label>Company:</label> <input id="photo_video_company_name" type="text" maxlen="60" />
+        <br /><label>Contact Name:</label> <input id="photo_video_contact_name" type="text" maxlen="120" />
+        <br /><label>Phone:</label> <input id="photo_video_phone" type="phone" />
+        <br /><label>Arrival Time:</label> <input id="photo_video_arrival_time" type="time" /></p>
+  
+    <br />
+    <h1>Linens and More</h1>
+    <p><label>Please check which person is to supply the following linens:</label></p>
+    <table class="linens_wrap">
+      <tr><th>Linens</th><th>Provided By</th></tr>
+      <tr><td>Head table</td>
+            <td><input id="htable_linen_prov_by" type="multi_option" options="Royal Ambassador;Your Decorator" /></td></tr>
+      <tr><td>Guests tables</td>
+            <td><input id="gtable_linen_prov_by" type="multi_option" options="Royal Ambassador;Your Decorator" /></td></tr>
+      <tr><td>Receiving table</td>
+            <td><input id="rtable_linen_prov_by" type="multi_option" options="Royal Ambassador;Your Decorator" /></td></tr>
+      <tr><td>Cake table</td>
+            <td><input id="ctable_linen_prov_by" type="multi_option" options="Royal Ambassador;Your Decorator" /></td></tr>
+      <tr><td>Antipasto Bar</td>
+            <td><input id="atable_linen_prov_by" type="multi_option" options="Royal Ambassador;Your Decorator" /></td></tr>
+      <tr><td>Sweet table</td>
+            <td><input id="stable_linen_prov_by" type="multi_option" options="Royal Ambassador;Your Decorator" /></td></tr>
+      <tr><td>Napkins</td>
+            <td><input id="napkins_prov_by" type="multi_option" options="Royal Ambassador;Your Decorator" /></td></tr>
+      <tr><td>Signing table for the ceremony</td>
+            <td><input id="sgtable_linen_prov_by" type="multi_option" options="Royal Ambassador;Your Decorator" /></td></tr>
+    </table> 
+    
+    <br />
+    <h3>PLEASE MAKE SURE ANY LINENS, OVERLAYS, TABLE RUNNERS, NAPKINS, NAPKIN RINGS AND CHARGER 
+    PLATES ARE DELIVERED AND LABELLED THE THURSDAY BEFORE YOUR EVENT**ESPECIALLY IF 
+    YOUR EVENT IS ON A FRIDAY!</h3>
+    
+    <p><label>Please check off any additional items that will be supplied by your decorator:</label></p>
+    <table class="linens_wrap">
+      <tr><th>Misc Items</th><th>Provided By</th></tr>
+      <tr><td>Back drop</td>
+            <td><input id="bdrop_linen_prov_by" type="multi_option" options="N/A;Your Decorator" /></td></tr>
+      <tr><td>Napkin rings</td>
+            <td><input id="nprings_linen_prov_by" type="multi_option" options="N/A;Your Decorator" /></td></tr>
+      <tr><td>Charger plates</td>
+            <td><input id="chg_plates_linen_prov_by" type="multi_option" options="N/A;Your Decorator" /></td></tr>
+      <tr><td>Chair covers</td>
+            <td><input id="chair_cov_linen_prov_by" type="multi_option" options="N/A;Your Decorator" /></td></tr>
+      <tr><td>Overlays</td>
+            <td><input id="ovl_linen_prov_by" type="multi_option" options="N/A;Your Decorator" /></td></tr>
+      <tr><td>Busta box</td>
+            <td><input id="bustabox_linen_prov_by" type="multi_option" options="N/A;Your Decorator" /></td></tr>
+      <tr><td>Swag on the head table/cake table</td>
+            <td><input id="htable_swag_prov_by" type="multi_option" options="N/A;Your Decorator" /></td></tr>
+      <tr><td>Swag on the receiving table</td>
+            <td><input id="rtable_swag_linen_prov_by" type="multi_option" options="N/A;Your Decorator" /></td></tr>
+      <tr><td>Other (Please specify): <input id="other_linen_name" type="text" maxlen="60" /></td>
+            <td><input id="other_linen_prov_by" type="multi_option" options="N/A;Your Decorator" /></td></tr>
+    </table> 
+    <br />
+    <p><label>In-house Linen:</label> <input id="inhouse_linens" type="multi_option" 
+                                            options="White;Ivory;N/A" /></p>
+    <br />
+    <h3>PLEASE EMAIL THIS FORM PRIOR TO YOUR FINAL MEETING AND BRING A COPY OF THIS 
+    COMPLETED FORM TO YOUR FINAL MEETING WITH A COPY OF YOUR WEDDING DAY ITINERARY</h3>
+    <br />
+    <h3>A REMINDER THAT FINAL PAYMENT IS DUE 10 DAYS PRIOR TO YOUR EVENT</h3>
+    
+    <h1>Delivery</h1>
+    <p><label>Day of delivery:</label> 
+        <input id="delivery_date" type="date" maxlen="60" />	*LOADING DOOR ONLY*</p>
+    <table id="delivery_wrap">
+      <tr><td>Thursday before event:</td><td>12:00pm – 02:00pm</td></tr>
+      <tr><td></td><td>12:00pm – 02:00pm</td></tr>
+      <tr><td></td><td>02:00pm – 04:00pm</td></tr>
+      <tr><td></td><td>06:00pm – 08:00pm</td></tr>
+      <tr><td>Friday before event:</td><td>10:00am – 11:30am</td></tr>
+      <tr><td></td><td>03:00pm – 05:00pm</td></tr>
+      <tr><td>Saturday Before event</td><td>10:00am – 01:00pm</td></tr>
+      <tr><td></td><td>01:00pm – 03:00pm</td></tr>
+    </table>  
+    <h3><label>DATE OF EVENT:</label> #event_date# 
+        <label>ROOM OF EVENT:</label> #event_room#</h3>
+
+    <br />
+    <p>*Please read the list of items, and circle the items that you are leaving 
+    at The Royal Ambassador.  Any items that are being delivered 
+    the day of your event are to be specified.  Please make instructions 
+    for any items that you want placed in a particular order.  
+    Label all boxes with your name, date of event, room of event, and the contents.*</p>   
+    
+    <table id="items_to_leave_wrap">
+      <tr><td>Bombonieres:</td><td><input id="items_leave_bombo" type="yes_no" /></td>
+                <td>How Many: <input id="items_leave_bombo_how_many" type="number" /></td></tr>
+      
+      <tr><td>Centerpieces:</td><td><input id="items_leave_cntrpiece" type="yes_no" /></td>
+                <td>How Many: <input id="items_leave_cntrpiece_how_many" type="number" /></td></tr>
+      
+      <tr><td>Seating Cards (in alphabetical order):</td>
+              <td><input id="items_leave_seat_card" type="yes_no" /></td>
+                <td>How Many: <input id="items_leave_seat_card_how_many" type="number" /></td></tr>
+      
+      <tr><td>Busta Box:</td><td><input id="items_leave_busta_box" type="yes_no" /></td>
+                <td>How Many: <input id="items_leave_busta_box_how_many" type="number" /></td></tr>
+      
+      <tr><td>Receiving Line Cookies:</td><td><input id="items_leave_rec_line" type="yes_no" /></td>
+                <td>How Many: <input id="items_leave_rec_line_how_many" type="number" /></td></tr>
+      
+      <tr><td>Book to Sign:</td><td><input id="items_leave_book_sign" type="yes_no" /></td>
+                <td>How Many: <input id="items_leave_book_sign_how_many" type="number" /></td></tr>
+      
+      <tr><td>Pen:</td><td><input id="items_leave_pen" type="yes_no" /></td>
+                <td>How Many: <input id="items_leave_pen_how_many" type="number" /></td></tr>
+      
+      <tr><td>Picture in Frame:</td><td><input id="items_leave_pic_frame" type="yes_no" /></td>
+                <td>How Many: <input id="items_leave_pic_frame_how_many" type="number" /></td></tr>
+      
+      <tr><td>Cake Lifter:</td><td><input id="items_leave_cake_lift" type="yes_no" /></td>
+                <td>How Many: <input id="items_leave_cake_lift_how_many" type="number" /></td></tr>
+      
+      <tr><td>Cake Knife:</td><td><input id="items_leave_cake_knife" type="yes_no" /></td>
+                <td>How Many: <input id="items_leave_cake_knife_how_many" type="number" /></td></tr>
+      
+      <tr><td>Champagne Flutes:</td><td><input id="items_leave_champ_flut" type="yes_no" /></td>
+                <td>How Many: <input id="items_leave_champ_flut_how_many" type="number" /></td></tr>
+      
+      <tr><td>Cake Topper:</td><td><input id="items_leave_cake_top" type="yes_no" /></td>
+                <td>How Many: <input id="items_leave_cake_top_how_many" type="number" /></td></tr>
+      
+      <tr><td>Menus:</td><td><input id="items_leave_menus" type="yes_no" /></td>
+                <td>How Many: <input id="items_leave_menus_how_many" type="number" /></td></tr>
+      
+      <tr><td>Other Items (Please enter one per line):</td>
+            <td colspan="2"><input id="items_leave_other" type="multi_line" empty_lines="3" /></td></tr>
+    </table>
+    
+    <p>PLEASE NOTE THAT ALL ITEMS INCLUDING DÉCOR MUST BE REMOVED FROM
+      THE FACILITY THE EVENING OF.</p>
+
+    <br />
+    <h3>IMPORTANT NOTICE:
+      THE ROYAL AMBASSADOR IS NOT RESPONSIBLE FOR ITEMS LOST OR STOLEN.</h3>
+
+  ]]></layout>
+</itinerary>
