@@ -1,0 +1,51 @@
+<table_name>EVENT;EVENT_FACILITY</table_name>
+<id_column>UID;UID</id_column><link_column>LNK_EVENT</link_column>
+<form_body>
+  <scr_elm elm_id="event_lnk_main_event">
+    <default_value>%lnk_main_event%</default_value>
+  </scr_elm>
+
+  <scr_section>form_body</scr_section>
+    <scr_elm elm_id="event_lnk_customer">
+      <custom_html_id>lnk_customer</custom_html_id>
+      <default_value>%customer_id%</default_value>
+    </scr_elm>
+    <format_item><![CDATA[<div class="line_break"></div>]]></format_item>
+    <scr_elm elm_id="event_lnk_customer_contact">
+      <sql_str>SELECT UID, concat(FIRST_NAME,' ',LAST_NAME) AS CONTACT_NAME 
+                  FROM CUSTOMER_CONTACT WHERE LNK_CUSTOMER = %customer_id%
+      </sql_str>
+      <default_value>~def_show_on_no_value~</default_value>
+      <show_on_no_value>~def_show_on_no_value~</show_on_no_value>
+    </scr_elm>
+    <format_item><![CDATA[<div class="line_break"></div>]]></format_item>
+    <scr_elm elm_id="event_lnk_event_type">
+      <sql_str>SELECT UID, TYPE_NAME FROM EVENT_TYPE 
+              WHERE UID != ~EVENT_TYPE_ID_CATERING~</sql_str>
+      <default_value>~def_show_on_no_value~</default_value>
+      <show_on_no_value>~def_show_on_no_value~</show_on_no_value>
+    </scr_elm>
+    <format_item><![CDATA[<div class="line_break"></div>]]></format_item>
+    <scr_elm elm_id="event_lnk_rehearsal_for">
+      <label>Rehearsal for Event</label>
+      <sql_str>SELECT UID, CONCAT('Id: ',UID,' on ',DATE_FORMAT(START_DATE_TIME,"%M %d %Y")) 
+                    AS EVENT_INFO FROM EVENT 
+                WHERE LNK_CUSTOMER = %customer_id% 
+                  AND LNK_EVENT_TYPE IN (~EVENT_TYPE_ID_WED_CEREMONY~
+                                        ,~EVENT_TYPE_ID_WED_RECEPTION~
+                                        ,~EVENT_TYPE_ID_WED_CER_RECEPTION~)</sql_str>
+      <default_value>~def_show_on_no_value~</default_value>
+      <show_on_no_value>~def_show_on_no_value~</show_on_no_value>
+      <layout><![CDATA[
+        <p class="rehearsal_wrap"><label>#label#:</label><span class="element">#element#</span>
+                          <span class="mand_sign">#mand_sign#</span></p>
+      ]]></layout>
+    </scr_elm>
+    <format_item><![CDATA[<div class="line_break"></div>]]></format_item>
+    <scr_elm elm_id="event_event_title">
+    </scr_elm>
+    <format_item><![CDATA[<div class="line_break"></div>]]></format_item>
+    <scr_elm elm_id="event_lnk_sales_person">
+    </scr_elm>
+    <format_item><![CDATA[<div class="line_break"></div>]]></format_item>
+    <scr_elm elm_id="event_start_date_time">
