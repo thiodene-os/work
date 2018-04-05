@@ -9,3 +9,4 @@ Litecoin                                        Org                             
 Ethereum                                        Org                                       Techcrunch
 Porsche                                         Org                                       Techcrunch
 Murlo                                           Person                                    RA
+Nora En Pure                                    Person                                    RA
