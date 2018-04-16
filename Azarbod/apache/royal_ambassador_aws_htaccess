@@ -1,0 +1,108 @@
+#php_flag display_errors on
+#php_flag display_startup_errors on
+#php_value error_reporting 2047
+
+#php_flag register_globals off
+#php_value upload_max_filesize 50M
+#php_value post_max_size 50M
+
+#Header add Access-Control-Allow-Origin "*"
+#Header add Access-Control-Allow-Headers "origin, x-requested-with, content-type"
+#Header add Access-Control-Allow-Methods "PUT, GET, POST, DELETE, OPTIONS"
+
+Options -Indexes
+Options +FollowSymlinks
+Options -MultiViews
+
+RewriteEngine On
+RewriteBase /
+
+ErrorDocument 404 /404/
+
+# For https
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Force www
+RewriteCond %{HTTP_HOST} !^$
+RewriteCond %{HTTP_HOST} !^www\.theroyalambassador\.com [NC]
+RewriteCond %{HTTPS}s ^on(s)|
+RewriteRule ^ http%1://www.%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# Force trailing slash
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI}  !\.[a-zA-Z0-9]{2,4}$
+RewriteCond %{HTTPS}s ^on(s)|
+RewriteRule ^(.*)([^/])$ http%1://%{HTTP_HOST}/$1$2/ [L,R=301]
+
+RewriteRule ^adminpanel/?$ /adminpanel/index.php [L]
+
+# For sites with user accounts
+#RewriteRule ^account/(.*)$ /$1?restrictedArea=1 [L]
+
+# Generic rule for details pages
+# Rules for News/Upcoming Events
+RewriteRule ^news/?$ /news.php [L]
+RewriteRule ^news/([a-zA-Z0-9\-_]+)/?$ /news-details.php?news=$1 [QSA,L]
+
+# Rules For Locations
+RewriteRule ^locations/?$ /locations.php [L]
+RewriteRule ^locations/([a-zA-Z0-9\-_]+)/?$ /location-direction.php?location=$1 [QSA,L]
+
+# Rules for Catering
+RewriteRule ^catering/?$ /catering-info.php [L]
+RewriteRule ^catering/([a-zA-Z0-9\-_]+)/?$ /catering-details.php?slug=$1 [QSA,L]
+#RewriteRule ^catering/([a-zA-Z0-9\-_]+)/?$ /catering-details.php?slug=$1 [QSA,L]
+
+# Rules for About
+RewriteRule ^about/?$ /about/about-us/ [QSA,L]
+RewriteRule ^about/our-team/?$ /our-team.php [L]
+RewriteRule ^about/([a-zA-Z0-9\-_]+)/?$ /about-us.php?slug=$1 [QSA,L]
+
+# Rules for Gallery
+RewriteRule ^gallery/?$ /gallery.php [L]
+RewriteRule ^gallery/([a-zA-Z0-9\-_]+)/?$ /gallery-details.php?slug=$1 [QSA,L]
+
+# Rules for Reviews
+RewriteRule ^reviews/?$ /reviews.php?slug=$1 [QSA,L]
+RewriteRule ^reviews/([a-zA-Z0-9\-_]+)/?$ /reviews.php?slug=$1 [QSA,L]
+
+# Rules for Sitemap
+RewriteRule ^sitemap/?$ /sitemap.php?slug=$1 [QSA,L]
+RewriteRule ^sitemap/([a-zA-Z0-9\-_]+)/?$ /sitemap.php?slug=$1 [QSA,L]
+
+#For static pages
+#RewriteRule ^pages/?([a-zA-Z0-9\-_]+)/?$ /page.php?page=$1 [QSA]
+
+
+# Rules for event details
+RewriteRule ^events/?$ /events.php [L]
+RewriteRule ^events/([a-zA-Z0-9\-_]+)/?$ /event-detail.php?slug=$1 [QSA,L]
+
+# Rules for facilities details
+RewriteRule ^facilities/([a-zA-Z0-9\-_]+)/([a-zA-Z0-9\-_]+)/?$ /facility-detail.php?slug=$1&slug2=$2 [QSA,L]
+RewriteRule ^facilities/([a-zA-Z0-9\-_]+)/?$ /about-us.php?slug=$1 [QSA,L]
+RewriteRule ^facilities/?$ /facilities.php [L]
+
+<IfModule mod_rewrite.c>
+  Options +FollowSymlinks -MultiViews -Indexes
+  RewriteEngine On
+  
+  # Adaptive-Images -----------------------------------------------------------------------------------
+
+  # Add any directories you wish to omit from the Adaptive-Images process on a new line, as follows:
+  # RewriteCond %{REQUEST_URI} !ignore-this-directory
+  # RewriteCond %{REQUEST_URI} !and-ignore-this-directory-too
+
+  RewriteCond %{REQUEST_URI} !assets
+
+  # don't apply the AI behaviour to images inside AI's cache folder:
+  RewriteCond %{REQUEST_URI} !ai-cache
+
+  # Send any GIF, JPG, or PNG request that IS NOT stored inside one of the above directories
+  # to adaptive-images.php so we can select appropriately sized versions
+
+  RewriteRule \.(?:jpe?g|gif|png)$ /inc/adaptive-images.php
+
+  # END Adaptive-Images -------------------------------------------------------------------------------
+</IfModule>
