@@ -1,5 +1,7 @@
 <?php
 
+  // Use: deleteRecords();
+
   // Add all the sales order items from the shopping cart
   $sql_str = "SELECT SHOPPING_CART.*, SHOPPING_CART.UID AS SCART_ID 
               FROM SHOPPING_CART WHERE SHOPPING_CART.SESSION_ID = '" . session_id() . "'" ;
