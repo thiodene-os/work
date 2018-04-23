@@ -1,0 +1,62 @@
+<fieldset id="cc_info_wrap">
+  <legend>Secure Payment Information</legend>
+
+  <img src="/~images_folder~/icon_secure.png" />
+
+  <br />
+
+  <label>Name on Credit Card:</label> 
+  <span class="element"><input type="text" id="name_on_cc" /></span>
+
+  <div class="left_break"></div>
+
+  <label>Type of Credit Card</label>
+  <span class="element"><select id="cc_type">
+    <option value="~def_show_on_no_value~">~def_show_on_no_value~</option>
+    <option value="~PAYMENT_PAYMENT_METHOD_VISA~">Visa</option>
+    <option value="~PAYMENT_PAYMENT_METHOD_MASTER_CARD~">Master Card</option>
+  </select></span>  
+
+  <div class="left_break"></div>
+
+  <label>Credit Card Number:</label> 
+  <span class="element"><input type="text" id="cc_num" /></span>
+
+  <div class="left_break"></div>
+
+  <label>Expiry:</label>
+  <span class="element">
+    <select id="cc_expiry_month">
+      <option value="~def_show_on_no_value~">~def_show_on_no_value~</option>
+      <option value="01">January</option>
+      <option value="02">February</option>
+      <option value="03">March</option>
+      <option value="04">April</option>
+      <option value="05">May</option>
+      <option value="06">June</option>
+      <option value="07">July</option>
+      <option value="08">August</option>
+      <option value="09">September</option>
+      <option value="10">October</option>
+      <option value="11">November</option>
+      <option value="12">December</option>
+    </select>
+    <select id="cc_expiry_year">%year_options%</select>
+  </span>
+
+  <div class="left_break"></div>
+
+  <label>CVD Number:</label> 
+  <span class="element"><input type="text" name="cvd" id="cvd" maxlength="4" size="4" /></span>
+
+  <!-- If payment is fine, transaction record will be put into this input so it is posted and saved -->
+  <input type="hidden" id="trans_record" name="trans_record" />
+
+  <br />
+</fieldset>
+<style type="text/css">
+  #cc_info_wrap                 {width: 50%; margin: auto;}
+  #cc_info_wrap legend          {color: #FFF; font-weight: bold;}
+  #cc_info_wrap label           {width: 150px; margin-left: 12px; margin-bottom: 5px; color:white;}
+  #cc_info_wrap img             {margin: 12px 12px 0 12px;}
+</style> 
