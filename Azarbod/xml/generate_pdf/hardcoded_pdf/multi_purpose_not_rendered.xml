@@ -1,0 +1,77 @@
+<page page_id="multi_purpose_not_rendered">
+  <page_path>/utility_progs/multi_purpose_not_rendered.php</page_path>
+  <shared_content content_id="member_protection" />
+  <title><![CDATA[Multi-Purpose]]></title>
+  <comment>This page does not render at all and is basically only a params_prog
+  The main usage is for other pages to link to it and then it say creates and downloads an Excel
+  export file. 
+  The problem is that if we export the file using POST method, then we can not place
+  the export program say in the header of the form. In that case, the POST will happen before
+  the search filter if they hit enter. That is why instead of using POST method we will link
+  those buttons to this page and this page, only causes the file to download and does not render 
+  at all.
+  </comment>
+  <params_prog><![CDATA[
+    $action = #_GET#['action'] ;
+    
+    if ($action == "event_contract")
+    {
+      $pdf_obj = generateEventPDF("contract",#_GET#['event_id']) ;
+      $pdf_obj -> downloadFile(); 
+    }  
+    elseif ($action == "event_invoice")
+    {
+      $event_type = lookupColumnById("EVENT","UID",#_GET#['event_id'],"LNK_EVENT_TYPE") ;
+      if ($event_type == EVENT_TYPE_ID_CATERING)
+        $pdf_obj = generateEventPDF("invoice_catering",#_GET#['event_id']) ;
+      else  
+        $pdf_obj = generateEventPDF("invoice_regular",#_GET#['event_id']) ;
+      $pdf_obj -> downloadFile(); 
+    }  
+    elseif ($action == "esp_event_contract")
+    {
+      $pdf_obj = generateEspEventPDF("contract_esp_event",#_GET#['event_book_id']) ;
+      $pdf_obj -> downloadFile(); 
+    }  
+    elseif ($action == "esp_event_invoice")
+    {
+      $pdf_obj = generateEspEventPDF("invoice_esp_event",#_GET#['event_book_id']) ;
+      $pdf_obj -> downloadFile(); 
+    }  
+    elseif ($action == "floor_plan" || $action == "esp_floor_plan")
+    {
+      $show_part = #_GET#['show_part'] ;
+      
+      $pdf_obj = generateFloorPlanPdf(#_GET#['fplan_id'],#_GET#['action'],$show_part) ;
+      $pdf_obj -> downloadFile(); 
+    }  
+    elseif ($action == "inv_count")
+    {
+      // Download inventory count sheet
+      require_once("class.pdf_section.php");
+      require_once("class.pdf_element_tree.php");
+      require_once("class.pdf_gen.php");
+      
+      $pdf_config_def = getSysObjectDef("inv_count_print_out",SYS_OBJECT_TYPE_PDF_CONFIG) ;
+      $pdf_config_def = str_replace("%inv_count_id%",#_GET#['inv_count_id'],$pdf_config_def) ;
+      $config_root = buildXMLRoot($pdf_config_def) ;
+      $pdf_obj = new pdfGenerator($config_root);
+      $pdf_obj -> createPDF(); // creates the actual pdf file in the temp folder
+      $pdf_obj -> downloadFile(); 
+    } 
+    elseif ($action == "itinerary")
+    {
+      // Download the itinerary in PDF form
+      require_once("class.pdf_section.php");
+      require_once("class.pdf_element_tree.php");
+      require_once("class.pdf_gen.php");
+      
+      $pdf_config_def = getSysObjectDef("itin_print_out",SYS_OBJECT_TYPE_PDF_CONFIG) ;
+      $pdf_config_def = str_replace("%itin_id%",#_GET#['itin_id'],$pdf_config_def) ;
+      $config_root = buildXMLRoot($pdf_config_def) ;
+      $pdf_obj = new pdfGenerator($config_root);
+      $pdf_obj -> createPDF(); // creates the actual pdf file in the temp folder
+      $pdf_obj -> downloadFile(); 
+    }    
+  ]]></params_prog>
+</page>
