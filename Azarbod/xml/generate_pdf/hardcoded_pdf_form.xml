@@ -1,0 +1,50 @@
+<pdf_config pdf_config_id="itin_print_out">
+  <params_prog>
+    $itin_rec = lookupColumnById("ITINERARY","UID",%itin_id%,"LNK_EVENT,DT_CREATED") ;
+    
+    //debug($itin_rec,"itin_rec","File: " . __FILE__ . " Line: " . __LINE__) ; 
+
+    $event_rec = lookupRecordbyId("EVENT","UID",$itin_rec['LNK_EVENT']
+                                        ,"LNK_CUSTOMER") ;
+    $customer_name = lookupColumnById("CUSTOMER","UID",$event_rec['LNK_CUSTOMER'],"CUSTOMER_NAME") ;
+    
+    $params['event_id'] = $itin_rec['LNK_EVENT'] ;
+    $params['created_by'] = $customer_name ;
+    $params['created_date'] = date( "D M j, Y h:ia", strtotime($itin_rec['DT_CREATED'])) ;
+    $params['date_time'] = date("D M j, Y h:ia") ;
+  </params_prog>
+  <page_format>
+    <page_width>215.9</page_width><page_height>279.4</page_height>
+    <margin_top>10</margin_top><margin_bottom>10</margin_bottom>
+    <margin_left>2</margin_left><margin_right>2</margin_right>
+    <line_height>2</line_height>
+    <default_font_size>8</default_font_size>
+  </page_format>
+  <style>
+    <class name="p"><![CDATA[text-align: center;]]></class>
+    <class name="mid_title"><![CDATA[font-weight: B; font-size: 10; font-color: #4285f4;]]></class>
+    <class name="td"><![CDATA[border: 1 solid #000;]]></class>
+  </style>
+  <file_name_template>itinerary_%itin_id%.pdf</file_name_template>
+  <pdf_section name="itin_items" type="Misc">
+    <section_params_prog><![CDATA[
+      // Hardcode the Itin body to display each section of the itinerary
+      // Same order as shown in the Itinerary. The info in same order as shown on web page
+      $itin_body = '' ;
+      
+    
+      $section_params['itin_body'] = "<table>" . $itin_body . "</table>" ;
+    ]]></section_params_prog>
+    <section_body>	
+      <format_item><![CDATA[%itin_body%]]></format_item>
+    </section_body>
+    <layout><![CDATA[#section_body#]]></layout>
+  </pdf_section>
+  <sections_layout><![CDATA[
+    <h1>Itinerary Details for event %event_id%</h1>
+    <h2>Created by %created_by% on %created_date%</h2>
+    <h3>(Print: %date_time%)</h3>
+    <br />
+    #itin_items#
+  ]]></sections_layout>
+</pdf_config>
