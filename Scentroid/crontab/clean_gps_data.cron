@@ -1,0 +1,2 @@
+@reboot /usr/bin/weavedstart.sh
+0 * * * * /usr/bin/php /var/www/html/crontab/clean_gps_data.php >> /var/www/html/crontab/cron.log 2>&1
