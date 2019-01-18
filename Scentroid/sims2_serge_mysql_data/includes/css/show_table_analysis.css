@@ -1,0 +1,84 @@
+
+/*----------------------------------------------------------Left/Right parts----------------------------------------------------------------------- */
+
+.right_data                         {width: 25% ;float: right ;}
+.right_data .main_map               {width: 100% ; padding-bottom: 25px;}
+.left_data                          {float: left;width: 73% ;}
+.full_width_data                    {width: 100%; float: right ;}
+.main_graph                         {width: 100%;}
+.main_met_graph                     {width: 45%; float: right; margin-left: 25px;}
+.user_nav                           {float: right;}
+.user_nav img                       {height: 50px;}
+.user_logout                        {color: white; background-color: #d43f3a; padding: 7px; font-size: 14px; text-decoration: none;}
+.fa                                 {font-size: 16px; margin-right: 5px;}
+.button_update                      {font-family: fa5-proxima-nova,Helvetica Neue,Helvetica,Arial,sans-serif;
+                                     font-size: 20px; color: white; background-color: #2ecc71; border-radius: .25rem ; padding: 7px;
+                                     cursor: pointer; margin-left: 15px;}
+.button_update:hover                {background-color: #27ae60;}
+.input_fields                       {height: 100px; float: left; margin: 0 auto; line-height: 100px; vertical-align: middle;
+                                     text-align: center;}
+.input_fields form                  {margin-left: auto ; margin-right: auto;}
+.input_date                         {padding: 5px;}
+.input_select                       {padding: 5px;}
+.ui-datepicker-trigger              {vertical-align: middle}
+
+/*----- Button in Tables for Chart curve display -----*/
+.option                             {background: #888; border-radius: .3em; min-width: 4em;
+                                     text-align: center; padding: .3em; color: #FFF;
+                                     margin: .3em; display: inline-block;}
+.option.selectable                  {cursor: pointer;}
+.option.remove                      {background: #429319;}
+.option.add                         {display: none;}
+
+.fa-check                           {margin-left: .15em;}
+.fa                                 {font-size: 16px; margin-right: 5px;}
+
+/*----------------------------------------------------------Sensor Data Tables----------------------------------------------------------------------- */
+
+.sensor_data                        {width: 100%; /* Optional */
+                                    /* border-collapse: collapse; */
+                                     border-spacing: 0; border: 1px solid #CCCCCC; background-color: white; margin-bottom: 15px;}
+
+.sensor_data tbody,
+.sensor_data thead                  {display: block;}
+
+.sensor_data thead tr th            {height: 50px; line-height: 50px; color: black; text-align: left;}
+
+.sensor_data tbody                  {height: 500px; overflow-y: auto; overflow-x: hidden;}
+
+.sensor_data tbody                  {border-top: 1px solid #CCCCCC;}
+
+.sensor_data tbody td, .sensor_data thead th 
+                                    {/* width: 20%; */ /* Optional */
+                                     border-right: 1px solid white;
+                                     /* white-space: nowrap; */}
+
+.sensor_data tbody tr td            {height: 60px; text-align: left;}
+
+.sensor_data tbody tr:nth-child(2n -1)               
+                                    {background-color: #F0F0F0;}
+
+.sensor_data tbody td:last-child, .sensor_data thead th:last-child 
+                                    {border-right: none; }
+.sensor_data tbody td:first-child, .sensor_data thead th:first-child 
+                                    {width: 150px;}
+.sensor_data tbody td:nth-child(2)  {width: 30%; text-align:right;}
+.sensor_data thead th:nth-child(2)  {width: 30%;}
+.sensor_data tbody td:nth-child(3), .sensor_data thead th:nth-child(3) 
+                                    {width: 20%; text-align:center;}
+.sensor_data tbody td:nth-child(4), .sensor_data thead th:nth-child(4) 
+                                    {width: 15%;}
+
+
+/*---------------------------------------------------------- Meteorological Data Tables----------------------------------------------------------------------- */
+
+
+/* Create a weather box for displaying Met data on top of popup window on Google Map */
+#weather_box                        {width: 450px; height: 140px; overflow:auto; /*background: rgba(38, 127, 255, 0.6);*/
+                                     border: 1px solid white; margin: 5px 0 15px 5px; padding: 0;}
+.inner_box                          {float:left; white-space:nowrap ; margin: 2px 5px 3px 5px; width:45%;}
+.image_trans                        {vertical-align: middle; height: 25px; width: 25px; margin: 0 5px 0 5px;}
+.line_text                          {display:inline; white-space:nowrap; font-size:14px; font-family: tahoma;
+                                     color: black ;}
+.line_image                         {display:inline;}
+                                    
