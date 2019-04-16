@@ -13,7 +13,7 @@ function buildJSONDataOutput($timestamp=false)
   $json_output = '' ;
   
   // Move the very last picture over to /var/www/images.
-  rename
+  //rename
   
   // Go through the last SQL record and populate the JSON
   $query = "SELECT small_data.id AS smalldata_id, lat, lon, wind_speed, wind_direction
@@ -36,13 +36,22 @@ function buildJSONDataOutput($timestamp=false)
   
   $timestamp = $row[17] ;
   
-  $image_path = 'http://localhost/images/snapshot360.jpg' ;
+  $image_path = 'http://localhost/images/cam360.jpg' ;
+  $image_path = 'http://localhost/images/lidar.jpg' ;
   
   // Start with Timestamp
   $json_output .= '{"timestamp":"' . $timestamp . '",' ;
   // GPS Data
-  $json_output .= '"lat":"' . $lat . '",' ;
+  // LAT
+  if ($lat)
+    $json_output .= '"lat":"' . $lat . '",' ;
+  else
+    $json_output .= '"lat":"",' ;
+  // LON
+  if ($lon)
   $json_output .= '"lon":"' . $lon . '",' ;
+  else
+    $json_output .= '"lon":"",' ;
   // Speed + Direction
   $json_output .= '"wind":["' . $wind_speed . '","' . $wind_direction . '"],' ;
   $json_output .= '"vehicle":["' . $vehicle_speed . '","' . $vehicle_direction . '"],' ;
@@ -50,10 +59,11 @@ function buildJSONDataOutput($timestamp=false)
   $json_output .= '"co":["' . $co_mv . '","' . $co_ppm . '","' . $co_dataunit . '"],' ;
   $json_output .= '"no2":["' . $no2_mv . '","' . $no2_ppm . '","' . $no2_dataunit . '"],' ;
   $json_output .= '"o3":["' . $o3_mv . '","' . $o3_ppm . '","' . $o3_dataunit . '"],' ;
-  $json_output .= '"pm2.5":["' . $pm25_mv . '","' . $pm25_ppm . '","' . $$pm25_dataunit . '"],' ;
+  $json_output .= '"pm2.5":["' . $pm25_mv . '","' . $pm25_ppm . '","' . $pm25_dataunit . '"],' ;
   $json_output .= '"pm10":["' . $pm10_mv . '","' . $pm10_ppm . '","' . $pm10_dataunit . '"],' ;
   // Snapshot image 360
-  $json_output .= '"image":"' . $image_path . '"' ;
+  $json_output .= '"cam360":"' . $cam_path . '"' ;
+  $json_output .= '"lidar":"' . $lidar_path . '"' ;
   
   $json_output .= '}' ;
   
