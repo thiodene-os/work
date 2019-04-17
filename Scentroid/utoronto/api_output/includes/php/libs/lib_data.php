@@ -103,8 +103,8 @@ function buildJSONDataOutput($timestamp=false)
   $pm25_s2_ugm3 = $row[27] ; $pm25_s2_dataunit = 'ug/m3' ;
   $pm4_s2_ugm3 = $row[28] ; $pm4_s2_dataunit = 'ug/m3' ; 
   $pm10_s2_ugm3 = $row[29] ; $pm10_s2_dataunit = 'ug/m3' ;
-  $temp_s2 = $row[31] ; $temp_s2_dataunit = 'C' ;
-  $humid_s2 = $row[32] ; $humid_s2_dataunit = '%' ;
+  $temp_s2 = $row[30] ; $temp_s2_dataunit = 'C' ;
+  $humid_s2 = $row[31] ; $humid_s2_dataunit = '%' ;
   
   $aqi_s2 = $row[32] ;
   
