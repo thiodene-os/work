@@ -3,6 +3,88 @@
 // Notification libraires for Alarms, Health and all types of Notifications
 // SQL + Email or SMS handling and sending
 
+// save PolluTracker Data
+function recordPolluTrackerData($pt, $data)
+{
+  // Connect to db
+  $dbc = db_connect_ut() ;
+  
+  $result = '' ;
+  
+  // Get the date for sesion Table
+  $session_dt = date("dmY", strtotime("now"));
+  
+  // The data in CSV has to exploded and saved in the correct order
+  $data_array = explode(",", $data) ;
+  $value_co_mv = $data_array[0] ;
+  $value_co_ppm = $data_array[1] ;
+  $value_no2_mv = $data_array[2] ;
+  $value_no2_ppm = $data_array[3] ;
+  $value_o3_mv = $data_array[4] ;
+  $value_o3_ppm = $data_array[5] ;
+  
+  $value_pm1_ugm3 = $data_array[6] ;
+  $value_pm25_ugm3 = $data_array[7] ;
+  $value_pm4_ugm3 = $data_array[8] ;
+  $value_pm10_ugm3 = $data_array[9] ;
+  
+  $value_temp = $data_array[10] ;
+  $value_humid = $data_array[11] ;
+  
+  // Check if there is an awaiting polly tracker data to be saved
+  $query = "SELECT small_data.id AS data_id
+             FROM small_data
+        WHERE status" . $pt . " IS NOT NULL"
+        . " ORDER BY id DESC LIMIT 1" ;
+  $result = mysqli_query($dbc, $query) or trigger_error("Query: $query\n<br>MySQL Error: " . mysqli_error($dbc));
+  if (@mysqli_num_rows($result) != 0)
+  {
+    $row = mysqli_fetch_array($result, MYSQLI_NUM) ;
+    $data_id = $row[0] ;
+    
+    // UPDATE in terms of data
+    // + in the end UPDATE the status of this record
+    // UPDATE main small data table
+    $query2 = "UPDATE small_data 
+               SET value" . $pt . "_co_mv=" . $value1_co_mv . ",value" . $pt . "_co_ppm=" . $value1_co_ppm . "
+               ,value" . $pt . "_no2_mv=" . $value1_no2_mv . ",value" . $pt . "_no2_ppm=" . $value1_no2_ppm . "
+               ,value" . $pt . "_o3_mv=" . $value1_o3_mv . ",value" . $pt . "_o3_ppm=" . $value1_o3_ppm . "
+               ,value" . $pt . "_pm1_ugm3=" . $value1_pm1_ugm3 . ",value" . $pt . "_pm25_ppm=" . $value1_pm25_ugm3 . "
+               ,value" . $pt . "_pm4_ugm3=" . $value1_pm4_ugm3 . ",value" . $pt . "_pm10_ppm=" . $value1_pm10_ugm3 . "
+               ,value" . $pt . "_temp=" . $value1_temp . ",value" . $pt . "_humid=" . $value1_humid . "
+               , status" . $pt . "=NULL",
+              . " WHERE id = " . $data_id ;
+    $result2 = mysqli_query($dbc, $query2) or trigger_error("Query: $query2\n<br>MySQL Error: " . mysqli_error($dbc)) ;
+    
+    if (mysqli_affected_rows($dbc) != 0)
+      $result = '{"success": true}' ;
+    else
+      $result = '{"success": false}' ;
+    
+    
+    /*
+    // UPDATE session small data table
+    $query2 = "UPDATE small_data_" . $session_dt ." 
+               SET value" . $pt . "_co_mv=" . $value1_co_mv . ",value" . $pt . "_co_ppm=" . $value1_co_ppm . "
+               ,value" . $pt . "_no2_mv=" . $value1_no2_mv . ",value" . $pt . "_no2_ppm=" . $value1_no2_ppm . "
+               ,value" . $pt . "_o3_mv=" . $value1_o3_mv . ",value" . $pt . "_o3_ppm=" . $value1_o3_ppm . "
+               ,value" . $pt . "_pm1_ugm3=" . $value1_pm1_ugm3 . ",value" . $pt . "_pm25_ppm=" . $value1_pm25_ugm3 . "
+               ,value" . $pt . "_pm4_ugm3=" . $value1_pm4_ugm3 . ",value" . $pt . "_pm10_ppm=" . $value1_pm10_ugm3 . "
+               ,value" . $pt . "_temp=" . $value1_temp . ",value" . $pt . "_humid=" . $value1_humid . "
+               , status" . $pt . "=NULL",
+              . " WHERE id = " . $data_id ;
+    $result2 = mysqli_query($dbc, $query2) or trigger_error("Query: $query2\n<br>MySQL Error: " . mysqli_error($dbc)) ;
+    */
+    }
+    
+  }
+  
+  // Close db
+  db_close($dbc) ;
+  
+  return $result ;
+} //recordPolluTrackerData
+
 // Builds and returns the JSON output for the latest recorded data
 function buildJSONDataOutput($timestamp=false)
 {
