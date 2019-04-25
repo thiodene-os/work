@@ -1,16 +1,19 @@
 <?php
 
-require_once('/var/www/html/includes/php/common.php') ;
-require_once('/var/www/html/includes/php/libs/lib_data.php') ;
+// For allowing remote connection to API add the following header:
+header('Access-Control-Allow-Origin: *') ;
 
-if (isset($_GET['submitted'])) 
+require_once('/var/www/html/api_sync/includes/php/common.php') ;
+require_once('/var/www/html/api_sync/includes/php/libs/lib_data.php') ;
+
+if (isset($_GET['submitted']))
 {
     // Get the selected company ID from GET
     $pt = $_GET['pt'] ;
     $data = $_GET['data'] ;
     //$timestamp = $_GET['timestamp'] ;
-    
-    $result = recordPolluTrackerData($pollu, $data) ;
+
+    $result = recordPolluTrackerData($pt, $data) ;
     echo $result ;
 }
 else
@@ -20,5 +23,5 @@ else
     echo '{"submitted": false}' ;
 }
 
-
 ?>
+
