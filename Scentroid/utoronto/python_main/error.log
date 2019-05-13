@@ -1,9 +1,0 @@
-[04/25/2019, 10:39:27] 1045 (28000): Access denied for user 'scentroidx'@'localhost' (using password: YES)
-[04/25/2019, 10:39:29] 1045 (28000): Access denied for user 'scentroidx'@'localhost' (using password: YES)
-[04/25/2019, 10:39:31] 1045 (28000): Access denied for user 'scentroidx'@'localhost' (using password: YES)
-[04/25/2019, 10:39:33] 1045 (28000): Access denied for user 'scentroidx'@'localhost' (using password: YES)
-[04/25/2019, 10:39:35] 1045 (28000): Access denied for user 'scentroidx'@'localhost' (using password: YES)
-[04/25/2019, 10:54:31] 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'CREAT TABLE IF NOT EXISTS `small_data_25042019` (`id` int(10) UNSIGNED NOT NULL ' at line 1
-[04/25/2019, 10:54:33] 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'CREAT TABLE IF NOT EXISTS `small_data_25042019` (`id` int(10) UNSIGNED NOT NULL ' at line 1
-[04/25/2019, 10:54:35] 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'CREAT TABLE IF NOT EXISTS `small_data_25042019` (`id` int(10) UNSIGNED NOT NULL ' at line 1
-[04/25/2019, 10:54:38] 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'CREAT TABLE IF NOT EXISTS `small_data_25042019` (`id` int(10) UNSIGNED NOT NULL ' at line 1
