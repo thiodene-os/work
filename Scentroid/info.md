@@ -1,1 +1,1 @@
-# Completed work at Scentroid.
+# All about DRIMS
