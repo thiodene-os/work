@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="div1">
+        </div>
+        <div id="div2">
+            <input type="button" value="Go!" onclick="go()" />
+        </div>
+        <script type="text/javascript">
+            var newsc = '<script id="sc1" type="text/javascript">function go() { alert("GO!") }<\/script>';
+            var e = document.getElementById('div1');
+            e.innerHTML = newsc;
+            eval(document.getElementById('sc1').innerHTML);
+        </script>
+    </body>
+</html>

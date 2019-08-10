@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>Weather Side Box</title>
+<style type="text/css">
+/* Create a weather box for displaying Met data on top of popup window on Google Map */
+#weather_box                        {width: 450px; height: 140px; overflow:auto; /*background: rgba(38, 127, 255, 0.6);*/
+                                     border: 1px solid white; margin: 5px 0 15px 5px; padding: 0;}
+.inner_box                          {float:left; white-space:nowrap ; margin: 2px 5px 3px 5px; width:45%;}
+.image_trans                        {vertical-align: middle; height: 25px; width: 25px; margin: 0 5px 0 5px;}
+.line_text                          {display:inline; white-space:nowrap; font-size:14px; font-family: tahoma;
+                                     color: black ;}
+.line_image                         {display:inline;}
+</style>
+</head>
+<body>
+
+<div id="weather_box">
+  <div class="inner_box">
+    <div class="line_image"><img class="image_trans" src="images/icon_temp.png"/></div>
+    <div class="line_text">Ext. Temperature</div>
+    <div class="line_text">26 <sup>&#8451;</sup></div>
+  </div>
+  <div class="inner_box">
+    <div class="line_image"><img class="image_trans" src="images/icon_rain.png"/></div>
+    <div class="line_text">Daily Rain</div>
+    <div class="line_text">26 <sup>&#8451;</sup></div>
+  </div>
+  <div class="inner_box">
+    <div class="line_image"><img class="image_trans" src="images/icon_hum.png"/></div>
+    <div class="line_text">Ext. Humidity</div>
+    <div class="line_text">34 <sup>&#8451;</sup></div>
+  </div>
+  <div class="inner_box">
+    <div class="line_image"><img class="image_trans" src="images/icon_temp.png"/></div>
+    <div class="line_text">Int. Temperature</div>
+    <div class="line_text">34 <sup>&#8451;</sup></div>
+  </div>
+  <div class="inner_box">
+    <div class="line_image"><img class="image_trans" src="images/icon_hum.png"/></div>
+    <div class="line_text">Int. Humidity</div>
+    <div class="line_text">34 <sup>&#8451;</sup></div>
+  </div>
+  <div class="inner_box">
+    <div class="line_image"><img class="image_trans" src="images/icon_uv_radiation.png"/></div>
+    <div class="line_text">UV Radiation</div>
+    <div class="line_text">26 <sup>&#8451;</sup></div>
+  </div>
+  <div class="inner_box">
+    <div class="line_image"><img class="image_trans" src="images/icon_sun.png"/></div>
+    <div class="line_text">Solar Radiation</div>
+    <div class="line_text">34 <sup>&#8451;</sup></div>
+  </div>
+  <div class="inner_box">
+    <div class="line_image"><img class="image_trans" src="images/icon_press.png"/></div>
+    <div class="line_text">Pressure</div>
+    <div class="line_text">34 <sup>&#8451;</sup></div>
+  </div>
+  <div class="inner_box">
+    <div class="line_image"><img class="image_trans" src="images/icon_wind_spd.png"/></div>
+    <div class="line_text">Wind Speed</div>
+    <div class="line_text">34 <sup>&#8451;</sup></div>
+  </div>
+</div>
+
+</body>
+</html>

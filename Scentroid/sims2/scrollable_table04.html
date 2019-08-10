@@ -1,0 +1,228 @@
+<html>
+<head>
+<title>Scrollable Table</title>
+<style type="text/css">
+.scroll {
+    /* width: 100%; */ /* Optional */
+    /* border-collapse: collapse; */
+    border-spacing: 0;
+    border: 1px solid black;
+}
+
+.scroll tbody,
+.scroll thead { display: block;}
+
+.scroll thead tr th { 
+    height: 50px;
+    line-height: 50px;
+	color: black;
+    text-align: left;
+}
+
+.scroll tbody {
+    height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.scroll tbody { border-top: 1px solid black; }
+
+.scroll tbody td, .scroll thead th {
+    /* width: 20%; */ /* Optional */
+    border-right: 1px solid white;
+    /* white-space: nowrap; */
+}
+
+.scroll tbody tr td { 
+    height: 40px;
+    line-height: 40px;
+    text-align: left;
+}
+
+.scroll tbody tr:hover { 
+    background-color: #F0F0F0;
+}
+
+.scroll tbody td:last-child, .scroll thead th:last-child {
+    border-right: none;
+	width: 70px;
+}
+.scroll tbody td:first-child, .scroll thead th:first-child {
+	width: 150px;
+}
+.scroll tbody td:nth-child(2), .scroll thead th:nth-child(2) {
+	width: 150px;
+}
+.scroll tbody td:nth-child(3), .scroll thead th:nth-child(3) {
+	width: 100px;
+}
+.scroll tbody td:nth-child(4), .scroll thead th:nth-child(4) {
+	width: 80px;
+}
+.hour1, .hour8, .hour24 {
+  display: none;
+
+}
+</style>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript">
+// Change the selector if needed
+var $table = $('table.scroll'),
+    $bodyCells = $table.find('tbody tr:first').children(),
+    colWidth;
+
+// Adjust the width of thead cells when window resizes
+$(window).resize(function() {
+    // Get the tbody columns width array
+    colWidth = $bodyCells.map(function() {
+        return $(this).width();
+    }).get();
+    
+    // Set the width of thead columns
+    $table.find('thead tr').children().each(function(i, v) {
+        $(v).width(colWidth[i]);
+    });    
+}).resize(); // Trigger resize handler
+</script>
+
+<script>
+$( function() 
+{
+  var sensor_data = [ 
+                     ["H2S", "PPM", 0.015, 0.000, 0.008, 0.024, "387", "-", "287", "176"],
+                     ["O3", "PPM", 0.745, 0.000, 0.008, 0.024, "450", "-", "350", "239"],
+                     ["TRS-CH3-SH", "PPM", 0.016, 0.000, 0.008, 0.024, "355", "-", "255", "144"],
+                     ["NH3", "PPM", 0.215, 0.000, 0.008, 0.024, "220", "-", "120", "9"],
+                     ["PM1", "ug/m3", 5.900, 0.000, 0.008, 0.024, "-", "-", "330", "229"],
+                     ["PM2.5", "ug/m3", 16.750, 0.000, 0.008, 0.024, "280", "-", "180", "169"],
+                     ["PM10", "ug/m3", 19.750, 0.000, 0.008, 0.024, "500", "-", "400", "389"]
+                    ] ;
+  
+  $("#toggle_avg").change(function()
+  {
+    //alert("OK") ;
+    // Replace the Table values by the ones that correspond to the SELECT
+    var average = parseInt($(this).val()) ;
+    //alert (average) ;
+    var iter = 0 ;
+    
+    var value_pos = 0 ;
+    var aqi_pos = 0 ;
+    
+    // Choose the position where to get the appropriate data
+    switch (average) 
+    {
+    case 0:
+        value_pos = 2; aqi_pos = 6 ;
+        break;
+    case 1:
+        value_pos = 3; aqi_pos = 7 ;
+        break;
+    case 8:
+        value_pos = 4; aqi_pos = 8 ;
+        break;
+    case 24:
+        value_pos = 5; aqi_pos = 9 ;
+        break;
+    default:
+        value_pos = 2; aqi_pos = 6 ;
+        break;
+    } ;
+    
+    //alert (average + ":" + value_pos + ":" + aqi_pos) ;
+    //return false ;
+    
+    $("#gas tr").each(function()
+    {
+      // Now check if this TR has a chemical attributes
+      chemical = $(this).attr('chemical') ;
+      if(chemical)
+      {
+        //alert(chemical) ;
+        //$(this).find(".avg").val(sensor_data[iter][2]) ;
+        $(this).find(".avg").html(sensor_data[iter][value_pos].toFixed(3) + ' ' + sensor_data[iter][1]);
+        $(this).find(".aqi").html(sensor_data[iter][aqi_pos]);
+        //alert(sensor_data[iter][2]) ;
+        //alert(iter) ;
+        //alert(sensor_data[iter][aqi_pos]) ;
+        iter += 1 ;
+      }
+      
+    }) ;
+    
+  }) ;
+}) ;
+</script>
+
+</head>
+<body>
+
+<table id="gas" class="scroll">
+<thead>
+<tr>
+<th>Sensor</th>
+<th><select id="toggle_avg"><option value="0" selected>Current</option><option value="1">1 Hour</option>
+<option value="8">8 Hours</option><option value="24">24 Hours</option></select></th>
+<th>AQI</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+
+<tr chemical="H2S">
+<td>H2S</td>
+<td class="avg">0.015 PPM</td>
+<td class="aqi">187</td>
+<td>PLOT</td>
+</tr>
+
+<tr chemical="O3">
+<td>O3</td>
+<td class="avg">0.745 PPM</td>
+<td class="aqi">450</td>
+<td>PLOT</td>
+</tr>
+
+<tr chemical="TRS-CH3-SH">
+<td>TRS-CH3-SH</td>
+<td class="avg">0.016 PPM</td>
+<td class="aqi">155</td>
+<td>PLOT</td>
+</tr>
+
+<tr chemical="NH3">
+<td>NH3</td>
+<td class="avg">0.215 PPM</td>
+<td class="aqi">220</td>
+<td>PLOT</td>
+</tr>
+
+
+<tr chemical="PM1">
+<td>PM1</td>
+<td class="avg">5.900 ug/m3</td>
+<td class="aqi">-</td>
+<td>PLOT</td>
+</tr>
+
+<tr chemical="PM2.5">
+<td>PM2.5</td>
+<td class="avg">16.750 ug/m3</td>
+<td class="aqi">280</td>
+<td>PLOT</td>
+</tr>
+
+<tr chemical="PM10">
+<td>PM10</td>
+<td class="avg">19.750 ug/m3</td>
+<td class="aqi">500</td>
+<td>PLOT</td>
+</tr>
+
+</tbody>
+
+</table>
+
+
+</body>
+</html>

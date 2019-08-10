@@ -1,0 +1,67 @@
+# Temporary Sims2.0 website developed by Serge Ayissi
+# Mainly for tests of new features and templates
+
+# Main PHP files for initialization
+/sims2/includes/php/common.php
+/sims2/includes/php/constants.php
+
+# Libraries in PHP
+/sims2/includes/php/libs
+
+# Templates
+/sims2/templates
+
+# Other include files
+/sims2/includes/
+
+# All images
+/sims2/images
+
+# Vultr Server / PHP 7.2 / Apache / Linux / MySQL
+Name: Serge1
+IP: 207.246.86.177
+FTP: root / +2Hn-MT{kW8k(hq#
+FTP: thiodene / EQ$ua.12#4
+PHPMyAdmin: phpmyadmin / EQ$ua.12
+PHPMyAdmin: root / EQ$ua.12 (?)
+
+SSH: root@207.246.86.177 / Port:22 / +2Hn-MT{kW8k(hq#
+
+################################# VULTR SIMS/DRIMS #######################################
+
+SSH: root@149.248.50.12 / Port:22 / 5mJ@z]BXw_dW8[$e
+
+PHPMyAdmin: sims / l6xYQQRnLAmty1ex / http://149.248.50.12/phpmyadmin/
+
+####################################### HEALTH ###########################################
+
+- Here are the errors so far in the SL50:
+
+#define ZERO_OFFSET_DRIFT_ERROR_CODE                             "FS001"
+#define HIGH_INTERNAL_TEMPERATURE_ERROR_CODE                     "FS141"
+#define HIGH_INTERNAL_HUMIDITY_ERROR_CODE                        "FS151"
+#define LOW_INTERNAL_TEMPERATURE_ERROR_CODE                      "FS140"
+#define LOW_INTERNAL_HUMIDITY_ERROR_CODE                         "FS150"
+
+//MEMORY ERROR CODES
+#define SD_CARD_FAILURE_ERROR_CODE                               "FM001"
+#define SD_CARD_LOW_MEM_ERROR_CODE                               "FM002"
+#----------------------------------------------------------------------------------------
+- Diagnosis Notifications:
+We have a new menu option under "SIMS Management" on side bar. This will contain of the settings related to the SIMS software. The email messages are editable under this menu.
+The URL works like below:
+https://beta.sims.scentroid.com/do/api/v1.diagnosis?issue=FS001&param[]=s1&sn=sl031701
+•    issue and sn are required.
+•    param is an array. You can have unlimited number of params, as long as you have equivalent  {0}, ...{k} variables in the email text in the settings page. This will help you have anything you want in the email.
+#----------------------------------------------------------------------------------------
+- For adding a message, you can go to phpmyadmin:
+http://sims.scentroid.com/phpmysqladmin/
+Username: root
+password:salam9080
+go to database: wikiodor_sims2
+find table: setting
+add a row with category "Sensor Diagnosis Messages" from Insert tab
+Then it will be shown and editable from sims settings page.
+
+Sincerely,
+Saeed

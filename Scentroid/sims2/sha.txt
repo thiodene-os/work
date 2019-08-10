@@ -1,0 +1,7 @@
+SHA of Clent accounts:
+Replace the SHA by admin SHA for debugging purposes:
+
+Global Admin / 2375ea99aacca7f4a9c9c5552c0ce9a4 / = ides1980
+
+ATUTUser@atut.lublin.pl (77) / 51cb3a0140b9e73de10fd6cebb1466ec
+ATUTAdmin@atut.lublin.pl (76) / c473c1d7ff1632b611b197b3a2f1a986

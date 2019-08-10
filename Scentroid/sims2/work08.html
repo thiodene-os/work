@@ -1,0 +1,247 @@
+<!DOCTYPE HTML>
+<html>
+<head> 
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script> 
+  <script type="text/javascript">
+  window.onload = function () 
+  {
+    var chart = new CanvasJS.Chart("chartContainer",
+    {
+      title:{
+        text: "Removing and adding dataSeries Dynamically"
+      },
+      data: [
+      {        
+        type: "spline",
+        dataPoints: [        
+          { x: 10, y: 71 },
+          { x: 20, y: 55 },
+          { x: 30, y: 50 },
+          { x: 40, y: 65 },
+          { x: 50, y: 95 },
+          { x: 60, y: 68 },
+          { x: 70, y: 28 },
+          { x: 80, y: 34 },
+          { x: 90, y: 14 }
+        ]
+      },
+      {        
+        type: "spline",        
+        dataPoints: [
+          { x: 10, y: 7 },
+          { x: 20, y: 5 },
+          { x: 30, y: 5 },
+          { x: 40, y: 16 },
+          { x: 50, y: 9 },
+          { x: 60, y: 24 },
+          { x: 70, y: 18 },
+          { x: 80, y: 14 },
+          { x: 90, y: 24 }      
+        ]
+      },
+      {        
+        type: "spline",        
+        dataPoints: [
+          { x: 10, y: 44 },
+          { x: 20, y: 25 },
+          { x: 30, y: 41 },
+          { x: 40, y: 6 },
+          { x: 50, y: 29 },
+          { x: 60, y: 54 },
+          { x: 70, y: 12 },
+          { x: 80, y: 74 },
+          { x: 90, y: 29 }      
+        ]
+      },
+      {        
+        type: "spline",        
+        dataPoints: [
+          { x: 10, y: 27 },
+          { x: 20, y: 90 },
+          { x: 30, y: 74 },
+          { x: 40, y: 85 },
+          { x: 50, y: 63 },
+          { x: 60, y: 87 },
+          { x: 70, y: 52 },
+          { x: 80, y: 44 },
+          { x: 90, y: 76 }      
+        ]
+      }
+      ]
+    });
+
+    chart.render();
+    
+    // Remove one data points from the chart
+    $(".remove").click(function()
+    {
+      // Confirm removing
+      if (! confirm("Do you really want to remove these data points?"))
+        return false ;
+      plot_number = $(this).attr("plot_number") ;
+      if (plot_number == "")
+        return false ;
+      //alert(plot_number) ;
+    	chart.data[plot_number].remove() ;
+      
+      // Now recalculate all the plots that were above the removed one!
+      // And also give no number to the one that has been removed cause it can't be removed anymore...
+      $(".remove").each(function()
+      {
+        plot_value = $(this).attr("plot_number") ;
+        //alert ("OK") ;
+        
+        if (plot_value > plot_number)
+        {
+          //alert("case 1") ;
+          $(this).attr("plot_number", plot_value - 1) ;
+        }
+        else if (plot_value == plot_number)
+        {
+          //alert("case 2") ;
+          $(this).attr("plot_number", "") ;
+        }
+      }) ;
+    
+    
+    }) ;
+    
+    
+    // Add these new data points to the chart
+    $(".add").click(function()
+    {
+      var not_plotted = true ;
+      var series_to_plot = 0 ;
+      // Confirm adding the data points
+      if (! confirm("Do you really want to add these data points?"))
+        return false ;
+      series = $(this).attr("series") ;
+      
+      // Now check if the data series is already on the chart
+      $(".remove").each(function()
+      {
+        plot_value = $(this).attr("plot_number") ;
+        plot_series = $(this).attr("series") ;
+        
+        // Verify its not already showing
+        if (plot_series == series && plot_value != "")
+        {
+          alert("These datapoints are already on the Chart!") ;
+          not_plotted = false ;
+          return false ;
+        }
+        else if (plot_series == series && plot_value == "")
+          series_to_plot = plot_series ;
+          
+      }) ;
+      
+      // If already plotted stop everything
+      if (!not_plotted)
+        return false ;
+      // Now display the new datapoints after the very curve and update its remove plot_number
+      // Check the highest number of actually plotted data points
+      var new_plot_number = 0 ;
+      var plot_exists = false ;
+      $(".remove").each(function()
+      {
+        plot_number = $(this).attr("plot_number") ;
+        if (plot_number.toString().length > 0)
+        {
+          plot_exists = true ;
+          if (plot_number > new_plot_number)
+            new_plot_number = plot_number ;
+        }
+      }) ;
+      
+      // increment the plot number for a new curve and add it to the empty remove button
+      if (plot_exists)
+        new_plot_number++ ;
+      //alert("series_to_plot" + series_to_plot) ;
+      // add new plot number to the right remove button
+      $(".remove").each(function()
+      {
+        series = $(this).attr("series") ;
+        if (series == series_to_plot)
+          $(this).attr("plot_number", new_plot_number) ;
+      }) ;
+      
+      var type= "spline" ;
+      var fillOpacity= .4;
+      var dataPoints = addDataPointsToChart(series_to_plot) ;
+      chart.options.data.push( {type: type, fillOpacity: fillOpacity, dataPoints: dataPoints} );
+      chart.render();
+    }) ;
+      
+    // Adds comma to non-empty string
+    function addDataPointsToChart(series_to_plot)
+    {
+      // This function returns the Data Points to be plotted
+      var dataPoints = [];
+      if (series_to_plot == 0)
+      {
+        dataPoints.push({ x: 10, y: 71 });
+        dataPoints.push({ x: 20, y: 55 });
+        dataPoints.push({ x: 30, y: 50 });
+        dataPoints.push({ x: 40, y: 65 });
+        dataPoints.push({ x: 50, y: 95 });
+        dataPoints.push({ x: 60, y: 68 });
+        dataPoints.push({ x: 70, y: 28 });
+        dataPoints.push({ x: 80, y: 34 });
+        dataPoints.push({ x: 90, y: 14 });          
+      }
+      else if (series_to_plot == 1)
+      {
+        dataPoints.push({ x: 10, y: 7 });
+        dataPoints.push({ x: 20, y: 5 });
+        dataPoints.push({ x: 30, y: 5 });
+        dataPoints.push({ x: 40, y: 16 });
+        dataPoints.push({ x: 50, y: 9 });
+        dataPoints.push({ x: 60, y: 24 });
+        dataPoints.push({ x: 70, y: 18 });
+        dataPoints.push({ x: 80, y: 14 });
+        dataPoints.push({ x: 90, y: 24 });      
+      }
+      else if (series_to_plot == 2)
+      {
+        dataPoints.push({ x: 10, y: 44 });
+        dataPoints.push({ x: 20, y: 25 });
+        dataPoints.push({ x: 30, y: 41 });
+        dataPoints.push({ x: 40, y: 6 });
+        dataPoints.push({ x: 50, y: 29 });
+        dataPoints.push({ x: 60, y: 54 });
+        dataPoints.push({ x: 70, y: 12 });
+        dataPoints.push({ x: 80, y: 74 });
+        dataPoints.push({ x: 90, y: 29 });
+      }
+      else if (series_to_plot == 3)
+      {
+        dataPoints.push({ x: 10, y: 27 });
+        dataPoints.push({ x: 20, y: 90 });
+        dataPoints.push({ x: 30, y: 74 });
+        dataPoints.push({ x: 40, y: 85 });
+        dataPoints.push({ x: 50, y: 63 });
+        dataPoints.push({ x: 60, y: 87 });
+        dataPoints.push({ x: 70, y: 52 });
+        dataPoints.push({ x: 80, y: 44 });
+        dataPoints.push({ x: 90, y: 76 });
+      }
+      return dataPoints ;
+    } // addDataPointsToChart
+  }
+  </script>
+  <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</head>
+<body>
+  <div id="chartContainer" style="height: 270px; width: 100%;">
+  </div>
+  <button class="remove" plot_number="0" series="0">Remove 1st series</button>
+  <button class="remove" plot_number="1" series="1">Remove 2nd series</button>
+  <button class="remove" plot_number="2" series="2">Remove 3rd series</button>
+  <button class="remove" plot_number="3" series="3">Remove 4th series</button>
+  <br />
+  <button class="add" series="0">Add 1st series</button>
+  <button class="add" series="1">Add 2nd series</button>
+  <button class="add" series="2">Add 3rd series</button>
+  <button class="add" series="3">Add 4th series</button>
+</body>
+</html>

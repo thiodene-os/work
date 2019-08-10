@@ -1,0 +1,181 @@
+<html>
+<head>
+<title>Scrollable Table</title>
+<style type="text/css">
+.scroll {
+    /* width: 100%; */ /* Optional */
+    /* border-collapse: collapse; */
+    border-spacing: 0;
+    border: 1px solid black;
+}
+
+.scroll tbody,
+.scroll thead { display: block;}
+
+.scroll thead tr th { 
+    height: 50px;
+    line-height: 50px;
+	color: black;
+    text-align: left;
+}
+
+.scroll tbody {
+    height: 120px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.scroll tbody { border-top: 1px solid black; }
+
+.scroll tbody td, .scroll thead th {
+    /* width: 20%; */ /* Optional */
+    border-right: 1px solid white;
+    /* white-space: nowrap; */
+}
+
+.scroll tbody tr td { 
+    height: 40px;
+    line-height: 40px;
+    text-align: left;
+}
+
+.scroll tbody tr:hover { 
+    background-color: #F0F0F0;
+}
+
+.scroll tbody td:last-child, .scroll thead th:last-child {
+    border-right: none;
+	width: 70px;
+}
+.scroll tbody td:first-child, .scroll thead th:first-child {
+	width: 180px;
+}
+.scroll tbody td:nth-child(2), .scroll thead th:nth-child(2) {
+	width: 120px;
+}
+.scroll tbody td:nth-child(3), .scroll thead th:nth-child(3) {
+	width: 100px;
+}
+.scroll tbody td:nth-child(4), .scroll thead th:nth-child(4) {
+	width: 80px;
+}
+</style>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript">
+// Change the selector if needed
+var $table = $('table.scroll'),
+    $bodyCells = $table.find('tbody tr:first').children(),
+    colWidth;
+
+// Adjust the width of thead cells when window resizes
+$(window).resize(function() {
+    // Get the tbody columns width array
+    colWidth = $bodyCells.map(function() {
+        return $(this).width();
+    }).get();
+    
+    // Set the width of thead columns
+    $table.find('thead tr').children().each(function(i, v) {
+        $(v).width(colWidth[i]);
+    });    
+}).resize(); // Trigger resize handler
+</script>
+</head>
+<body>
+
+<table class="scroll">
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Updated</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Internal Temperature</td>
+<td>31.57 C</td>
+<td>1 Hour ago</td>
+<td>PLOT</td>
+</tr>
+
+<tr>
+<td>Internal Humidity</td>
+<td>33.42%</td>
+<td>4 minutes ago</td>
+<td>PLOT</td>
+</tr>
+
+<tr>
+<td>External Temperature</td>
+<td>23.50 C</td>
+<td>4 minutes ago</td>
+<td>PLOT</td>
+</tr>
+
+<tr>
+<td>Wind Speed</td>
+<td>0.047 m/s</td>
+<td>4 minutes ago</td>
+<td>PLOT</td>
+</tr>
+
+
+<tr>
+<td>Wind Direction</td>
+<td>87.000 Degrees</td>
+<td>1 Hour ago</td>
+<td>PLOT</td>
+</tr>
+
+<tr>
+<td>Daily Rain</td>
+<td>1897.200 mm</td>
+<td>4 minutes ago</td>
+<td>PLOT</td>
+</tr>
+
+<tr>
+<td>Solar Radiation</td>
+<td>0.000 W/m2</td>
+<td>1 Hour ago</td>
+<td>PLOT</td>
+</tr>
+
+<tr>
+<td>UV Sensor</td>
+<td>0.000 UV Index</td>
+<td>1 Hour ago</td>
+<td>PLOT</td>
+</tr>
+
+
+<tr>
+<td>Barometric Pressure</td>
+<td>98.340 kPA</td>
+<td>4 minutes ago</td>
+<td>PLOT</td>
+</tr>
+
+<tr>
+<td>PM2.5</td>
+<td>16.750 ug/m3</td>
+<td>4 minutes ago</td>
+<td>PLOT</td>
+</tr>
+
+<tr>
+<td>PM10</td>
+<td>19.750 ug/m3</td>
+<td>4 minutes ago</td>
+<td>PLOT</td>
+</tr>
+
+</tbody>
+
+</table>
+
+
+</body>
+</html>

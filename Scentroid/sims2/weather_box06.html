@@ -1,0 +1,99 @@
+<html>
+<head>
+<title>Weather Side Box</title>
+<style type="text/css">
+#weather_box {
+  position:absolute ; 
+  left: 70px; 
+  top: 155px;  
+  z-index: 99;
+  width: 30%;
+  height: 120px;
+  overflow:auto;
+  background-color: #267fff;
+  border: 1px solid #a29415;
+  margin: 0;
+  padding: 0;
+}
+.inner_box                                
+{
+  float:left; 
+  overflow: hidden;
+  white-space:nowrap ; 
+  margin: 2px 35px 3px 15px;
+}
+.image_trans{
+  vertical-align: middle;
+  height: 44px;
+  width: 44px;
+  margin: 0 15px 0 15px;
+}
+.line_text {
+  display:inline; 
+  white-space:nowrap; 
+  font-size:16px;  
+  font-family: tahoma;
+  color: white ;
+}
+.line_image {
+  display:inline;
+}
+</style>
+</head>
+<body>
+
+<div id="weather_box">
+  <div class="inner_box">
+    <div class="line_text">Ext. Temperature</div>
+    <div class="line_image"><img class="image_trans" src="images/icon_temp_inv.png"/></div>
+    <div class="line_text">26 <sup>&#8451;</sup></div>
+  </div>
+  <div class="inner_box">
+    <div class="line_text">Daily Rain</div>
+    <div class="line_image"><img class="image_trans" src="images/icon_rain_inv.png"/></div>
+    <div class="line_text">26 <sup>&#8451;</sup></div>
+  </div>
+  <div class="inner_box">
+    <div class="line_text">Ext. Humidity</div>
+    <div class="line_image"><img class="image_trans" src="images/icon_hum_inv.png"/></div>
+    <div class="line_text">34 <sup>&#8451;</sup></div>
+  </div>
+  <div class="inner_box">
+    <div class="line_text">Int. Temperature</div>
+    <div class="line_image"><img class="image_trans" src="images/icon_temp_inv.png"/></div>
+    <div class="line_text">34 <sup>&#8451;</sup></div>
+  </div>
+  <div class="inner_box">
+    <div class="line_text">Int. Humidity</div>
+    <div class="line_image"><img class="image_trans" src="images/icon_hum_inv.png"/></div>
+    <div class="line_text">34 <sup>&#8451;</sup></div>
+  </div>
+  <div class="inner_box">
+    <div class="line_text">UV Radiation</div>
+    <div class="line_image"><img class="image_trans" src="images/icon_uv_inv.png"/></div>
+    <div class="line_text">26 <sup>&#8451;</sup></div>
+  </div>
+  <div class="inner_box">
+    <div class="line_text">Solar Radiation</div>
+    <div class="line_image"><img class="image_trans" src="images/icon_sun_inv.png"/></div>
+    <div class="line_text">34 <sup>&#8451;</sup></div>
+  </div>
+  <div class="inner_box">
+    <div class="line_text">Pressure</div>
+    <div class="line_image"><img class="image_trans" src="images/icon_press_inv.png"/></div>
+    <div class="line_text">34 <sup>&#8451;</sup></div>
+  </div>
+  <div class="inner_box">
+    <div class="line_text">Wind Speed</div>
+    <div class="line_image"><img class="image_trans" src="images/icon_wind_spd_inv.png"/></div>
+    <div class="line_text">34 <sup>&#8451;</sup></div>
+  </div>
+  <div class="inner_box">
+    <div class="line_text">Wind Direction</div>
+    <div class="line_image"><img class="image_trans" src="images/icon_wind_dir_inv.png"/></div>
+    <div class="line_text">34 <sup>&#8451;</sup></div>
+  </div>
+</div>
+
+</body>
+</html>
