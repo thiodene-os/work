@@ -1,0 +1,179 @@
+/*----------------------------------------------------------Font Awesome------------------------------------------------------------------ */
+
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
+
+/*----------------------------------------------------------Global Shop------------------------------------------------------------------- */
+
+body                                {padding: 0; margin: 0;}
+#main_content                       {width: 100% ; margin: 0; padding: 0;}
+#logo img                           {margin: 0; padding: 0;}
+/* input[type="text"]                  {border-left: 0; border-top: 0; border-right: 0; 
+                                     border-bottom: 1px dashed #999; width: 10em;}  */
+
+/*----------------------------------------------------------Back to Top------------------------------------------------------------------- */
+
+#myBtn                              {display: none; position: fixed; bottom: 20px; right: 30px;
+                                     z-index: 99; border: none; outline: none; background-color: #424242;
+                                     color: white; cursor: pointer; padding: 15px; border-radius: 10px;}
+
+#myBtn:hover                        {background-color: red;}
+
+/*----------------------------------------------------------Loader / Waiting-------------------------------------------------------------- */
+.loader                             {position: absolute; top: 30%; left: 45%; border: 16px solid #f3f3f3;
+                                     border-radius: 50%; border-top: 16px solid #3498db; width: 120px; height: 120px;
+                                     -webkit-animation: spin 2s linear infinite; /* Safari */
+                                     animation: spin 2s linear infinite; display: none; z-index: 900}
+
+/* Safari */
+@-webkit-keyframes spin             {0% { -webkit-transform: rotate(0deg); }
+                                     100% { -webkit-transform: rotate(360deg); }}
+
+@keyframes spin                     {0% { transform: rotate(0deg); }
+                                     100% { transform: rotate(360deg); }}
+
+/*----------------------------------------------------------Sidebar----------------------------------------------------------------------- */
+
+/* Main sidebar container */
+#sidebar ul                         {list-style: none; margin: 0; padding: 0; vertical-align: baseline;}
+#sidebar h1                         {margin-top: 0; color: #4D4D4D;}
+
+#sidebar h1                         {font-size: 21px; margin-bottom: 6px;}
+#sidebar                            {position: fixed; top: 0; left: 0; width: 55px; height: 100%;background: #ebf5fb;
+                                     box-shadow: 3px 0 5px 0 rgba(50, 50, 50, 0.4); padding-top: 0; z-index: 100;
+                                     font-family: "Open Sans", "sans-serif";}
+
+/* Logo + hover effects */
+#sidebar img                        {width: 80%; padding: 20% 10%; margin-bottom: 10px; transition: all .15s ease-in-out;}
+
+#sidebar img:hover                  {/* This hover also applies to menu level 0 icons */
+                                     background: #616161;}
+
+/* Level 0 items (icons) */
+#sidebar > ul > li                  {/* This sets the height of each menu list item;  */
+                                     /* transition property goes in the trigger instead of the target, otherwise fade-out animations don't happen */
+                                     transition: all .25s ease-in-out;}
+
+#sidebar li img                     {/* This sets the size & position of the image */
+                                     width: 60%; padding: 20%; margin-bottom: 0;}
+
+#sidebar li:hover,
+.cur_module                         {/* Hover on the LI instead of the IMG; if hover is on IMG it disappears when mousover relead menu */
+                                     background: #616161;}
+
+#sidebar li:hover > ul              {/* Target UL on hover */ visibility: visible; opacity: 1;}
+
+#sidebar li img:hover               {/* This hover also applies to menu level 0 icons */
+                                     background: none;}
+
+/* Level 1 items (sub-menu) */
+#sidebar li ul                      {/* Styling the sub list. Position: absolute is IMPORTANT here */
+                                     box-sizing: Border-box; position: absolute; margin-left: 55px; margin-top: -55.5px; width: 250px;
+                                     background-color: #424242; visibility: hidden; opacity: 0; transition: all .25s ease-in-out;
+                                     box-shadow: 4px 4px 5px 0 rgba(50, 50, 50, 0.4); border-bottom: 7px solid #616161; z-index: 100;}
+
+/* Level 1 title styling (rotated banner) */
+#sidebar ul ul h1                   {/* Rotated banner gets its own h1 definition */
+                                     box-sizing: Border-box; position: absolute; background: rgba(255, 255, 255, 0.5); width: 300px;
+                                     margin-left: 120px; margin-top: 155px; transform: rotate(90deg); -webkit-backface-visibility: hidden;
+                                     font-size: 1.3em; font-weight: 400; color: #000; text-align: left; text-transform: uppercase;}
+
+/* Level 1 input box & icon styling */
+#sidebar .menu_header               {/* Can't be targeted nicely with cascade, needs its own class :sigh: */
+                                     background: #616161; height: 51px; padding: 0 0 4px 6px;}
+
+#sidebar .menu_header:hover         {/* Don't want the orange hover on this one */
+                                     background: #616161;}
+
+#sidebar input                      {/* Styles the search input box; only 1 level of input boxes so I don't bother precisely targeting*/
+                                     width: 170px; height: 30px; margin-top: 12px; margin-left: 10px; font-weight: 400; border: 0; padding-left: 0.5em;}
+
+#sidebar li li img,
+#btn_launch_qsearch                 {/* Float right for proper inlining; this means that we have to position from the right as well */
+                                     width: 30px; margin: 14px 15px 0 0; padding: 0; cursor: pointer; float: right;}
+
+#sidebar li li img:hover            {background: none;}
+
+/* Level 1 list item styling */
+#sidebar li li                      {/* List items; slightly lighter transition here */
+                                     font-size: 0.9em; font-weight: 200; padding-left: 20px; height: 36px; line-height: 36px; color: #fff;
+                                     transition: all .10s ease-in-out; text-align: left;}
+
+#sidebar li li:hover                {background: #267fff;}
+
+/* Level 1 Link Styling */
+#sidebar a:link,
+#sidebar a:visited,
+#sidebar a:active,
+#sidebar a:hover                    {text-decoration: none; color: #fff; font-weight: 200; font-size: 1.1em;}
+
+/* Level 2 items (sub-sub-menu) */
+#sidebar li li ul                   {/* Some fine adjustments for the menu positioning */
+                                     margin-left: 230px; margin-top: -36px;}
+
+#sidebar li li li                   {/* List items; font size has to be applied here otherwise the menus will cascade smaller and smaller */
+                                     /* as the 0.9em is applied again and again (or larger as the case may be) */
+                                     font-size: 1em;}
+
+/****************************** End of Side Nav ****************************/
+
+#sidebar > a                        {display: none;}
+    
+@media only screen and ( max-width: 62.5em ) /* 1000 */
+		                                {
+  #sidebar                            {position: absolute; top: 0; left: 0; width: 55px; height: 100%; background: #ebf5fb;
+                                       box-shadow: 3px 0 5px 0 rgba(50, 50, 50, 0.4); padding-top: 0; z-index: 100;
+                                       font-family: "Open Sans", "sans-serif";}
+		
+  /* Logo + hover effects */
+  #sidebar img                        {width: 80%; padding: 20% 10%; margin-bottom: 20px; transition: all .15s ease-in-out;}
+
+  #sidebar img:hover                  {/* This hover also applies to menu level 0 icons */
+                                       background: #616161;}
+
+  #sidebar li img                     {/* This sets the size & position of the image */
+                                       width: 60%; padding: 20%; margin-bottom: 0;}
+    
+  #sidebar li img:hover               {/* This hover also applies to menu level 0 icons */
+                                       background: none;}
+    
+    
+  #sidebar li li img,
+  #btn_launch_qsearch                 {/* Float right for proper inlining; this means that we have to position from the right as well */
+                                       width: 30px; margin: 14px 15px 0 0; padding: 0; cursor: pointer; float: right;}
+
+  #sidebar li li img:hover            {background: none;}
+    
+    
+                                    }
+
+@media only screen and ( max-width: 40em ) /* 640 */
+                                    {
+  #sidebar > a                        {width: 3.125em; /* 50 */ 
+                                       height: 3.125em; /* 50 */
+                                       text-align: left; text-indent: -9999px; background-color: #ebf5fb; position: relative;}
+  #sidebar > a:before,
+  #sidebar > a:after
+                                      {position: absolute; border: 2px solid #267fff; top: 35%; left: 25%; right: 25%; content: '';}
+  #sidebar > a:after                  {top: 60%;}
+
+  #sidebar:not( :target ) > a:first-of-type,
+  #sidebar:target > a:last-of-type
+                                      {display: block;}
+
+
+  /* first level */
+
+  #sidebar > ul                       {/* height: auto; */
+                                       display: none; position: absolute; left: 0; right: 0;}
+  #sidebar:target > ul                {display: block;}
+  #sidebar > ul > li                  {width: 100%; float: none;}
+  #sidebar > ul > li > a              {/* height: auto; */
+                                       text-align: left; padding: 0; /* 20 (24) */ margin: 0;}
+  #sidebar > ul > li:not( :last-child ) > a
+                                      {border-right: none; padding:0; margin:0;}
+
+
+	/* second level */
+
+  #sidebar li ul                      {position: absolute; padding: 1.25em; /* 20 */ padding-top: 0;}
+                                    }

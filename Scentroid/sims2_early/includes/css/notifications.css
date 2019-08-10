@@ -1,0 +1,57 @@
+/*----------------------------------------------------------Pagination----------------------------------------------------------------------- */
+tbody.page_inactive                  {display: none;}
+tbody.page_active                    {display:table-row-group;}
+
+a.pages                               {color: black; float: left; padding: 8px 16px; text-decoration: none;}
+a.page_active                         {background-color: #f44336; color: white;}
+a.page_inactive:hover                 {background-color: #ddd;}
+
+/*-------------------------------------------------Navigation ------------------------------------------------------------- */
+
+body                                {margin: 0; font-family: Arial, Helvetica, sans-serif;}
+
+.topnav                             {overflow: hidden; background-color: #888;}
+
+.topnav a                           {float: left; color: #f2f2f2; text-align: center; padding: 14px 50px;
+                                     text-decoration: none; font-size: 17px;}
+
+.topnav a:hover                     {background-color: #ddd; color: black;}
+
+.topnav a.active                    {background-color: #267fff; color: white;}
+
+/*------------------------------------------------- Input Fields ------------------------------------------------------------- */
+
+.button_update                      {font-family: fa5-proxima-nova,Helvetica Neue,Helvetica,Arial,sans-serif;
+                                     font-size: 20px; color: white; background-color: #2ecc71; border-radius: .25rem ; padding: 7px;
+                                     cursor: pointer; margin-left: 15px;}
+.button_update:hover                {background-color: #27ae60;}
+.input_fields                       {height: 100px; float: left; margin: 0 auto; line-height: 100px; vertical-align: middle;
+                                     text-align: center;}
+.input_fields form                  {margin-left: auto ; margin-right: auto;}
+.input_date                         {padding: 5px;}
+.input_select                       {padding: 5px;}
+.input_text                         {padding: 5px;}
+
+/*------------------------------------------------------------Notification Table-------------------------------------------------------------------------- */
+.notification_table                 {background-color: white; margin-bottom: 25px; table-layout: fixed;}
+
+.notification_table  thead th 
+                                    {height: 25px; width: 100px;/* Optional */ text-align: center; 
+                                     /* white-space: nowrap; */} 
+                                     
+.notification_table  tbody td       {height: 40px;/* Optional */ text-align: center; 
+                                     /* white-space: nowrap; */}
+
+.notification_table  thead th       {background-color: darkblue; color: white ;}
+                                     
+.notification_table  tbody tr:nth-child(2n)               
+                                    {background-color: #F0F0F0;}
+                       
+.notification_table  thead th:first-child, tbody td:first-child               
+                                    {width: 400px;}
+                                    
+.notification_table  thead th:nth-child(2), tbody td:nth-child(2)              
+                                    {width: 200px;}
+                                    
+.notification_table  thead th:last-child, tbody td:last-child               
+                                    {width: 150px;}
