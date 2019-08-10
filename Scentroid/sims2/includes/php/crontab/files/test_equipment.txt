@@ -1,0 +1,296 @@
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>CRYPSTER - More Than Valuations, A Cryptocurrency Way of Life</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Content-language" content="en">
+<meta name="Resource-type" content="Document">
+<meta name="Distribution" content="global">
+<meta name="Author" content="crypster.cc - serge ayissi">
+<meta name="Copyright" content="Copyright (c) 2018 by crypster.cc">
+<meta name="Keywords" content="crypster, cyptocurrency, bitcoin, altcoin, binance, mining, trading, valuation, digital cash, vitual money, unregulated, digital money, community, flat currency, electronic money">
+<meta name="Description" content="In a world of Bitcoin, Altcoins and Cryptocurrencies, the emerging Crypster subculture defines a new way of life in the Crypto world; from the lifestyle and culture to the need for change in the contemporary western society - A Crypster">
+<meta name="Robots" content="index,follow">
+<meta name="Revisit-after" content="3 days">
+<meta name="Rating" content="general">
+<meta name="Generator" content="Bravenet - Bravenet.com - Copyright 2018">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"><style type="text/css" media="all">
+<!--
+@import url(/includes/css/css_global.css);
+
+@import url(/includes/css/css_entries.css);
+-->
+</style>
+</head>
+
+<body>
+
+<table class="wrapper" border="0" cellpadding="0" cellspacing="0">
+<tr>
+<td height="50" valign="middle">
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0" class="header">
+<tr>
+	<td align="center" bgcolor="#858585">
+		<table width="960" border="0" cellpadding="0" cellspacing="0">
+		<tr>
+		<td width="180" height="60" align="left" valign="middle"><a href="http://www.crypster.cc"><img src="/images/crypster_wog60.jpg" width="180" height="60" border="0" /></a></td>
+		<td width="780" height="60" align="left" valign="middle"><nav id="nav" role="navigation">
+<a href="#nav" title="Show navigation">Show navigation</a>
+<a href="#" title="Hide navigation">Hide navigation</a>
+<ul class="clearfix">
+<li><a href="http://www.crypster.cc/topics/index.php"  title=''>TOPICS</a></li>
+<li><a href="http://www.crypster.cc/currencies/index.php"  title='' aria-haspopup="true">CRYPTOCURRENCIES</a></li>
+<li><a href="http://www.crypster.cc/lifestyle/index.php"  title='' aria-haspopup="true">LIFESTYLE</a></li>
+<li><a href="http://www.crypster.cc/lists/index.php"  title='' aria-haspopup="true">LISTS</a></li>
+<li><a href="http://www.crypster.cc/statistics/index.php"  title='' aria-haspopup="true">STATISTICS</a></li>
+<li><a href="http://www.crypster.cc/search/index.php"  title=''><i class="fa fa-search fa-2x"></i><i class="side_menu_extra">SEARCH</i></a></li>
+<li><a href="http://www.crypster.cc/signin/index.php"  title=''><i class="fa fa-sign-in fa-2x"></i><i class="side_menu_extra">SIGN IN</i></a></li>
+<li><a href="http://www.crypster.cc/subscribe/index.php"  title=''><i class="fa fa-plus fa-2x"></i><i class="side_menu_extra">SUBSCRIBE</i></a></li>
+<li><a href="http://www.crypster.cc/signup/index.php"  title=''><i class="fa fa-user-circle fa-2x"></i><i class="side_menu_extra">SIGN UP</i></a></li>
+</ul>
+</nav></td>
+		</tr>
+		</table>
+	</td>
+</tr>
+</table>
+<table class="middle" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+	<td></td>
+	<td align="center" valign="top">
+		<table width="960" border="0" cellspacing="0" cellpadding="0" class="lateent">
+  <tr>
+    <td width="116" height="16" align="center" valign="middle"><img src="/bce/spacer.gif" width="1" height="1"></td>
+    <td width="728" height="16" align="center" valign="middle"><span class="advert">ADVERTISEMENT</span></td>
+    <td width="116" height="16" align="center" valign="middle"><img src\="/bce/spacer.gif" width="1" height="1"></td>
+  </tr>
+  <tr>
+    <td width="116" height="90" align="center" valign="middle"><img src="/bce/spacer.gif" width="1" height="1"></td>
+    <td width="728" height="90" align="center" valign="middle"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- topbanner -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-7983318394533936"
+     data-ad-slot="1105766805"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script></td>
+    <td width="116" height="90" align="center" valign="middle"><img src="/bce/spacer.gif" width="1" height="1"></td>
+  </tr>
+  <tr>
+    <td width="116" height="16" align="center" valign="middle"><img src="/bce/spacer.gif" width="1" height="1"></td>
+    <td width="728" height="16" align="center" valign="middle"><img src="/bce/spacer.gif" width="1" height="1"></td>
+    <td width="116" height="16" align="center" valign="middle"><img src="/bce/spacer.gif" width="1" height="1"></td>
+  </tr>
+</table>
+
+
+
+	</td>
+	<td></td>
+	</tr>
+	</table>
+</td>
+</tr>
+<tr id="footers">
+<td align="center" valign="middle">
+<table width="960" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+	<td width="100%" height="35" align="center" valign="middle"><img src="/bce/spacer.gif" width="1" height="1"></td>
+	</tr>
+</table>
+<div id="footer">
+<table width="960" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td height="10"><img src="/bce/spacer.gif" width="1" height="1"></td>
+    <td><img src="/bce/spacer.gif" width="1" height="1"></td>
+    <td><img src="/bce/spacer.gif" width="1" height="1"></td>
+    <td><img src="/bce/spacer.gif" width="1" height="1"></td>
+    <td><img src="/bce/spacer.gif" width="1" height="1"></td>
+    <td><img src="/bce/spacer.gif" width="1" height="1"></td>
+    <td><img src="/bce/spacer.gif" width="1" height="1"></td>
+    <td><img src="/bce/spacer.gif" width="1" height="1"></td>
+	<td><img src="/bce/spacer.gif" width="1" height="1"></td>
+  </tr>
+  <tr>
+    <td width="200" height="200" align="left" valign="top"><a href="http://www.ioneec.com"><img src="/images/bitcoin_monocle_wi.gif" height="200" border="0" /></a></td>
+	<td width="16" height="180" align="left" valign="top"><img src="/bce/spacer.gif" width="1" height="1"></td>
+	<td width="32" height="180" align="left" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="32" height="32" align="center" valign="middle"><a href="http://www.facebook.com/ioneec" rel="nofollow" target="_blank"><img src="/images/media_facebook.jpg" alt="Follow us on Facebook" width="32" height="32" border="0"></a></td>
+      </tr>
+      <tr>
+        <td width="32" height="10" align="center" valign="middle"><img src="/bce/spacer.gif" width="1" height="1"></td>
+      </tr>
+      <tr>
+        <td width="32" height="32" align="center" valign="middle"><a href="https://twitter.com/ioneec_com" rel="nofollow" target="_blank"><img src="/images/media_twitter.jpg" alt="Follow us on Twitter" width="32" height="32" border="0"></a></td>
+      </tr>
+      <tr>
+        <td width="32" height="10" align="center" valign="middle"><img src="/bce/spacer.gif" width="1" height="1"></td>
+      </tr>
+      <tr>
+        <td width="32" height="32" align="center" valign="middle"><a href="https://www.youtube.com/channel/UCiXaYUQ0bp0kDBWJyJ9sPoA" rel="nofollow" target="_blank"><img src="/images/media_youtube.jpg" alt="Follow us on Youtube" width="32" height="32" border="0"></a></td>
+      </tr>
+      <tr>
+        <td width="32" height="10" align="center" valign="middle"><img src="/bce/spacer.gif" width="1" height="1"></td>
+      </tr>
+      <tr>
+        <td width="32" height="32" align="center" valign="middle"><a href="http://www.soundcloud.com/ioneec" rel="nofollow" target="_blank"><img src="/images/media_soundcloud.jpg" alt="Follow us on Soundcloud" width="32" height="32" border="0"></a></td>
+      </tr>
+      <tr>
+        <td width="32" height="10" align="center" valign="middle"><img src="/bce/spacer.gif" width="1" height="1"></td>
+      </tr>
+      <tr>
+        <td width="32" height="32" align="center" valign="middle"><a href="http://pinterest.com/ioneec" rel="nofollow" target="_blank"><img src="/images/media_pinterest.jpg" alt="Follow us on Pinterest" width="32" height="32" border="0"></a></td>
+      </tr>
+    </table></td>
+<td width="10" height="180" align="left" valign="top"><img src="/bce/spacer.gif" width="1" height="1"></td>
+<td width="32" height="180" align="left" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td width="32" height="32" align="center" valign="middle"><a href="https://instagram.com/ioneec_com" rel="nofollow" target="_blank"><img src="/images/media_instagram.jpg" alt="Follow us on Instagram" width="32" height="32" border="0"></a></td>
+      </tr>
+      <tr>
+        <td width="32" height="10" align="center" valign="middle"><img src="/bce/spacer.gif" width="1" height="1"></td>
+      </tr>
+      <tr>
+        <td width="32" height="32" align="center" valign="middle"><a href="https://www.flickr.com/photos/131156007@N07/" rel="nofollow" target="_blank"><img src="/images/media_flickr.jpg" alt="Follow us on Flickr" width="32" height="32" border="0"></a></td>
+      </tr>
+      <tr>
+        <td width="32" height="10" align="center" valign="middle"><img src="/bce/spacer.gif" width="1" height="1"></td>
+      </tr>
+      <tr>
+        <td width="32" height="32" align="center" valign="middle"><a href="https://vimeo.com/ioneec" rel="nofollow" target="_blank"><img src="/images/media_vimeo.jpg" alt="Follow us on Vimeo" width="32" height="32" border="0"></a></td>
+      </tr>
+      <tr>
+        <td width="32" height="10" align="center" valign="middle"><img src="/bce/spacer.gif" width="1" height="1"></td>
+      </tr>
+      <tr>
+        <td width="32" height="32" align="center" valign="middle"><a href="http://ioneec.tumblr.com/" rel="nofollow" target="_blank"><img src="/images/media_tumblr.jpg" alt="Follow us on Tumblr" width="32" height="32" border="0"></a></td>
+      </tr>
+      <tr>
+        <td width="32" height="10" align="center" valign="middle"><img src="/bce/spacer.gif" width="1" height="1"></td>
+      </tr>
+      <tr>
+        <td width="32" height="32" align="center" valign="middle"><a href="https://plus.google.com/103887658068702363396/posts" rel="nofollow" target="_blank"><img src="/images/media_googleplus.jpg" alt="Follow us on Google Plus" width="32" height="32" border="0"></a></td>
+      </tr>
+    </table></td>
+	<td width="20" height="180" align="left" valign="top"><img src="/bce/spacer.gif" width="1" height="1"></td>
+    <td width="210" align="center" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+		<td width="5" background="/bce/footer_line2.gif"><img src="/bce/spacer.gif" width="1" height="1"></td>
+        <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="25" align="left" valign="middle"><span class="foottitle">About Us: </span></td>
+          </tr>
+          <tr>
+            <td height="20" align="left" valign="middle"><span class="foottext"><a href="http://www.ioneec.com/about">About IONEEC</a></span></td>
+          </tr>
+          <tr>
+            <td height="20" align="left" valign="middle"><span class="foottext"><a href="http://www.ioneec.com/learnmore">Learn More</a></span></td>
+          </tr>
+          <tr>
+            <td height="20" align="left" valign="middle"><span class="foottext"><a href="http://www.ioneec.com/formats">Formats & Technology</a></span></td>
+          </tr>
+          <tr>
+            <td height="20" align="left" valign="middle"><span class="foottext"><a href="http://www.forevent.com/ioneec" target="_blank">Events</a></span></td>
+          </tr>
+          <tr>
+            <td height="20" align="left" valign="middle"><span class="foottext"><a href="http://www.ioneec.com/privacy">Privacy Policy</a></span></td>
+          </tr>
+          <tr>
+            <td height="20" align="left" valign="middle"><span class="foottext"><a href="http://www.ioneec.com/debugging">Debugging & Updates</a></span></td>
+          </tr>
+          <tr>
+            <td height="20" align="left" valign="middle"><span class="foottext"><a href="http://www.copyrightdeposit.com/cd1/0030807.htm" target="_blank">Copyright</a></span></td>
+          </tr>
+        </table></td>
+      </tr>
+    </table></td>
+    <td width="210" align="center" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+		<td width="5" background="/bce/footer_line2.gif"><img src="/bce/spacer.gif" width="1" height="1"></td>
+        <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="25" align="left" valign="middle"><span class="foottitle">Stimulation: </span></td>
+          </tr>
+          <tr>
+            <td height="20" align="left" valign="middle"><span class="foottext"><a href="http://www.ioneec.com/view_result">View Latest Results</a></span></td>
+          </tr>
+		  <tr>
+            <td height="20" align="left" valign="middle"><span class="foottext"><a href="http://www.ioneec.com/popular_artists">Popular Artists</a></span></td>
+          </tr>
+          <tr>
+            <td height="20" align="left" valign="middle"><span class="foottext"><a href="http://www.ioneec.com/popular_samples">Popular Samples</a></span></td>
+          </tr>
+          <tr>
+            <td height="20" align="left" valign="middle"><span class="foottext"><a href="http://www.ioneec.com/lists/artist_list">List of Artists</a></span></td>
+          </tr>
+          <tr>
+            <td height="20" align="left" valign="middle"><span class="foottext"><a href="http://www.ioneec.com/lists/art_list">List of Arts</a></span></td>
+          </tr>
+          <tr>
+            <td height="20" align="left" valign="middle"><span class="foottext"><a href="http://www.ioneec.com/lists/genre_list">List of Genres</a></span></td>
+          </tr>
+          <tr>
+            <td height="20" align="left" valign="middle"><span class="foottext"><a href="http://www.ioneec.com/lists/type_list">List of Artwork Types</a></span></td>
+          </tr>
+          <tr>
+            <td height="20" align="left" valign="middle"><span class="foottext"><a href="http://www.ioneec.com/lists/api_list">List of APIs</a></span></td>
+          </tr>
+        </table></td>
+      </tr>
+    </table></td>
+    <td width="210" align="center" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+		<td width="5" background="/bce/footer_line2.gif"><img src="/bce/spacer.gif" width="1" height="1"></td>
+        <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td height="25" align="left" valign="middle"><span class="foottitle">Actions: </span></td>
+          </tr>
+          <tr>
+            <td height="20" align="left" valign="middle"><span class="foottext"><a href="http://www.ioneec.com/contactus">Contact Us</a></span></td>
+          </tr>
+          <tr>
+            <td height="20" align="left" valign="middle"><span class="foottext"><a href="http://www.ioneec.com/explore">Explore</a></span></td>
+          </tr>
+          <tr>
+            <td height="20" align="left" valign="middle"><span class="foottext"><a href="http://www.ioneec.com/search">Search</a></span></td>
+          </tr>
+          <tr>
+            <td height="20" align="left" valign="middle"><span class="foottext"><a href="http://www.crypster.cc/signup">Become A CRYPSTER</a></span></td>
+          </tr>
+          <tr>
+            <td height="20" align="left" valign="middle"><span class="foottext"><a href="http://www.ioneec.com/findajob">Find A Job</a></span></td>
+          </tr>
+          <tr>
+            <td height="20" align="left" valign="middle"><span class="foottext"><a href="http://www.ioneec.com/advertise">Advertise With Us</a></span></td>
+          </tr>
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+  <tr>
+    <td height="10"><img src="/bce/spacer.gif" width="1" height="1"></td>
+    <td><img src="/bce/spacer.gif" width="1" height="1"></td>
+    <td><img src="/bce/spacer.gif" width="1" height="1"></td>
+    <td><img src="/bce/spacer.gif" width="1" height="1"></td>
+    <td><img src="/bce/spacer.gif" width="1" height="1"></td>
+    <td><img src="/bce/spacer.gif" width="1" height="1"></td>
+    <td><img src="/bce/spacer.gif" width="1" height="1"></td>
+    <td><img src="/bce/spacer.gif" width="1" height="1"></td>
+	<td><img src="/bce/spacer.gif" width="1" height="1"></td>
+  </tr>
+</table>
+<p class="foot"><em class="copy"><a href="http://www.copyrightdeposit.com/cd1/0030807.htm" target="_blank">Copyright &copy; 2018</a> Development at The Chemistry Lab. All Rights Reserved.</em> | Designed & Built by <a href="http://www.thiodene.com" target="_blank">Thiodene</a></p> 
+</div>
+</td>
+</tr>
+</table>
+</body>
+
+</html>
