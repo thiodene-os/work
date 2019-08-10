@@ -1,0 +1,12 @@
+
+/*----------------------------------------------------------Google Maps----------------------------------------------------------------------- */
+
+/* Set the size of the div element that contains the map */
+#map                                {height: 100px; width: 100%;}
+
+#head                               {width: 100%; height: 100px; margin-bottom: 25px;}
+.head_logo                          {width: 15%; min-width: 200px; height: 100px; line-height: 100px; float: left;}
+.head_logo img                      {vertical-align: middle;}
+.head_map                           {width: 15%; min-width: 250px; height: 100px; float: left;}
+
+/*------------------------------------------------------------MapBox-------------------------------------------------------------------------- */

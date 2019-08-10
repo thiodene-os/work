@@ -1,0 +1,35 @@
+
+/*----------------------------------------------------------Login Page----------------------------------------------------------------------- */
+@import url(http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
+@import url(http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+html                                {background: url(/images/blurrr.jpg) no-repeat center center fixed; 
+                                     -webkit-background-size: cover;
+                                     -moz-background-size: cover;
+                                     -o-background-size: cover;
+                                     background-size: cover;}
+html,body                           {height:100%; width:100%; margin:0;}
+body , body                         {display:flex;}
+form                                {margin:auto;}
+.login                              {border: 1px solid #F0F0F0; min-width: 360px; width: auto; min-height: 300px; height: auto; 
+                                     background: rgba(255, 255, 255, 0.3);
+                                     box-shadow: 2px 2px 2px #999999; padding: 20px;}
+.reset                              {border: 1px solid #F0F0F0; min-width: 360px; width: auto; min-height: 220px; height: auto; 
+                                     background: rgba(255, 255, 255, 0.3);
+                                     box-shadow: 2px 2px 2px #999999; padding: 20px;}
+input[type="text"], input[type="password"]
+                                    {border-left: 0; border-top: 0; border-right: 0; border: 1px solid #999; 
+                                     padding: 10px 5px 10px 5px; width: 28em; clear: right;}
+.big_button                         {background: #449d44; font-weight: bold; font-size: 15px; text-align: center; 
+                                     padding: 8px 45px 7px 45px; color: white; display: inline-block; margin: .4em 0 .8em 0;
+                                     float: right ;}
+.big_button:hover                   {background: #255625; cursor: pointer;}
+.reset_button                       {background: #3498DB; font-weight: bold; font-size: 15px; text-align: center; 
+                                     padding: 8px 45px 7px 45px; color: white; display: inline-block; margin: .4em 0 .8em 0;
+                                     float: right ;}
+.reset_button:hover                 {background: #1B4F72; cursor: pointer;}
+.field                              {width: 100%; margin-bottom: 55px;}
+.fa-2x                              {font-size:16px;}
+.fa                                 {width: 40px; color: white; text-align:center; vertical-align:middle;}
+#login_container                    {clear: both; color: red; text-align:center;}
+
+#reset_container                    {clear:both; color: red; text-align:center;}

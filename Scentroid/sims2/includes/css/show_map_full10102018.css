@@ -1,0 +1,13 @@
+
+/*----------------------------------------------------------Google Maps----------------------------------------------------------------------- */
+
+/* Set the size of the div element that contains the map */
+#map                                {height: 800px; width: 100%; margin-bottom: 25px;}
+
+.box                                {float:left; overflow: hidden; background: #267fff; 
+                                     position:absolute ; left: 70px; top: 155px; display:none; z-index: 99;}
+/* Add padding and border to inner content for better animation effect */
+.box-inner                          {width: 520px; padding: 10px; border: 1px solid #a29415; color: white;}
+
+/*------------------------------------------------------------MapBox-------------------------------------------------------------------------- */
+

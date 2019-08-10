@@ -1,0 +1,133 @@
+/*----------------------------------------------------------Pagination----------------------------------------------------------------------- */
+tbody.page_inactive                  {display: none;}
+tbody.page_active                    {display:table-row-group;}
+
+a.pages                               {color: black; float: left; padding: 8px 16px; text-decoration: none;}
+a.page_active                         {background-color: #f44336; color: white;}
+a.page_inactive:hover                 {background-color: #ddd;}
+
+/*-----------------------------------------------Pagination Company----------------------------------------------------------------------- */
+tbody.cpage_inactive                  {display: none;}
+tbody.cpage_active                    {display:table-row-group;}
+
+a.cpages                               {color: black; float: left; padding: 8px 16px; text-decoration: none;}
+a.cpage_active                         {background-color: #f44336; color: white;}
+a.cpage_inactive:hover                 {background-color: #ddd;}
+
+/*-----------------------------------------------Pagination AQI----------------------------------------------------------------------- */
+tbody.apage_inactive                  {display: none;}
+tbody.apage_active                    {display:table-row-group;}
+
+a.apages                               {color: black; float: left; padding: 8px 16px; text-decoration: none;}
+a.apage_active                         {background-color: #f44336; color: white;}
+a.apage_inactive:hover                 {background-color: #ddd;}
+
+/*-----------------------------------------------Pagination AQI----------------------------------------------------------------------- */
+tbody.npage_inactive                  {display: none;}
+tbody.npage_active                    {display:table-row-group;}
+
+a.npages                               {color: black; float: left; padding: 8px 16px; text-decoration: none;}
+a.npage_active                         {background-color: #f44336; color: white;}
+a.npage_inactive:hover                 {background-color: #ddd;}
+
+/*----------------------------------------------------------Company Select----------------------------------------------------------------------- */
+
+.button_update                      {font-family: fa5-proxima-nova,Helvetica Neue,Helvetica,Arial,sans-serif;
+                                     font-size: 20px; color: white; background-color: #2ecc71; border-radius: .25rem ; padding: 7px;
+                                     cursor: pointer; margin-left: 15px;}
+.button_update:hover                {background-color: #27ae60;}
+.input_fields                       {height: 50px; float: left; margin: 0 auto; line-height: 50px; vertical-align: middle;
+                                     text-align: center;}
+.input_fields form                  {margin-left: auto ; margin-right: auto;}
+.input_date                         {padding: 5px;}
+.input_select                       {padding: 5px;}
+
+/*----------------------------------------------------------POPUP Dialog----------------------------------------------------------------------- */
+
+#dlg_show_sensors                   {height: 350px; overflow-y: auto; overflow-x: hidden;}
+#dlg_show_sensors img               {max-width: 1.8em; margin-top: 5px; margin-left: 5px;}
+#dlg_show_sensors ul                {list-style-type: none; width: 280px; padding: 0;}
+#dlg_show_sensors > div             {margin-left: 1.0em;}
+#dlg_show_sensors li                {cursor: pointer; background: #BED4E0; height: 20px; 
+                           padding-top: 5px; margin-top: .2em; text-align: center;}
+#dlg_show_sensors li:hover, #dlg_show_sensors li.selected 
+                                    {background: #E8D0DC; color:black;}
+                                    
+.ui-widget                          {font-family: Verdana,Arial,sans-serif; font-size: 0.9em;} 
+.ui-widget-content                  {color: #222222;}
+
+/*----------------------------------------------------------Dropdown Section----------------------------------------------------------------------- */
+
+/* Set the size of the div element that contains the map */
+
+.section                            {background-color: #eee; color: #444; cursor: pointer; padding: 18px; margin-bottom:10px; width: 100%;
+                                     border: none; text-align: left; outline: none; font-size: 15px; transition: 0.4s;}
+
+.active, .section:hover             {background-color: #ccc;}
+
+.section:after                      {content: '\02795'; /* Unicode character for "plus" sign (+) */
+                                     font-size: 13px; color: #777; float: right; margin-left: 5px;}
+
+.active:after                       {content: "\2796"; /* Unicode character for "minus" sign (-) */}
+
+.panel                              {padding: 0 18px; background-color: white; max-height: 0;
+                                     overflow: hidden; transition: max-height 0.2s ease-out;}
+
+/*------------------------------------------------------------User Table-------------------------------------------------------------------------- */
+.settings_table                     {background-color: white; margin-bottom: 25px;}
+
+.settings_table  thead th 
+                                    {height: 25px; /*width: 100px;*/ /* Optional */ text-align: center; 
+                                     /* white-space: nowrap; */} 
+                                     
+.settings_table  tbody td           {height: 40px;/* Optional */ text-align: center; 
+                                     /* white-space: nowrap; */}
+
+.settings_table  thead th           {background-color: darkblue; color: white ;}
+                                     
+.settings_table  tbody tr:nth-child(2n)               
+                                    {background-color: #F0F0F0;}
+                                    
+.settings_table  tbody tr:last-child               
+                                    {background-color: #FFFFFF;}
+
+.button                             {background: #888; border-radius: .3em; min-width: 4em;
+                                     text-align: center; padding: .3em; color: #FFF; margin: .3em; cursor: pointer;}
+.button_edit                        {background: #1589FF;} /* Dodger Blue */
+.button_delete                      {background: red;}
+.button_add                         {background: green;}
+.button_view                        {background: orange;}
+                                     
+/*------------------------------------------------------------AQI Table-------------------------------------------------------------------------- */
+
+#aqi                                {background-color: white; margin-bottom: 25px;}
+
+#aqi tbody td, #aqi thead th 
+                                    {width: 80px; height: 25px;/* Optional */ text-align: center; 
+                                     /* white-space: nowrap; */}    
+
+#aqi tbody tr:nth-child(2n)               
+                                    {background-color: #F0F0F0;}                                     
+                                     
+input[type=number]                  {-moz-appearance:textfield; width: 80px; font-size:18px; font-family: sans-serif;}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button 
+                                    {-webkit-appearance: none; margin: 0; }
+                                    
+.big_button                         {background: #F7941E; font-weight: bold; 
+                                     font-size: 15px; text-align: center; 
+                                     padding: 8px 15px 7px 15px; 
+                                     color: white; display: inline-block; margin: .4em .8em 0 0;}
+.big_button:hover                   {background: #EC5816; cursor: pointer;} 
+
+/*------------------------------------------------------------Company Info-------------------------------------------------------------------------- */
+
+textarea                            {height: 150px;}
+.company                            {margin-top: 15px;}
+.company dt                         {width:250px; text-align: left; float: left; clear: left;}
+.company dt                         {font-size: 14px; font-weight: bold;}
+.company dd                         {margin-bottom: 20px; line-height: 30px;}
+.text_field                         {width: 250px ;padding: 4px;}
+.message_text                       {display:block;}
+.submit                             {margin-left: 250px;}
+
