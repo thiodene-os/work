@@ -1,0 +1,177 @@
+<html>
+<head>
+<title>Scrollable Table</title>
+<style type="text/css">
+table.scroll {
+    /* width: 100%; */ /* Optional */
+    /* border-collapse: collapse; */
+    border-spacing: 0;
+    border: 1px solid black;
+}
+
+table.scroll tbody,
+table.scroll thead { display: block;}
+
+thead tr th { 
+    height: 50px;
+    line-height: 50px;
+	color: black;
+    text-align: left;
+}
+
+table.scroll tbody {
+    height: 250px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+tbody { border-top: 1px solid black; }
+
+tbody td, thead th {
+    /* width: 20%; */ /* Optional */
+    border-right: 1px solid white;
+    /* white-space: nowrap; */
+}
+
+tbody tr td { 
+    height: 40px;
+    line-height: 40px;
+    text-align: left;
+}
+
+tbody tr:hover { 
+    background-color: #F0F0F0;
+}
+
+tbody td:last-child, thead th:last-child {
+    border-right: none;
+	width: 70px;
+}
+tbody td:first-child, thead th:first-child {
+	width: 180px;
+}
+tbody td:nth-child(2), thead th:nth-child(2) {
+	width: 120px;
+}
+tbody td:nth-child(3), thead th:nth-child(3) {
+	width: 100px;
+}
+tbody td:nth-child(4), thead th:nth-child(4) {
+	width: 80px;
+}
+</style>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script type="text/javascript">
+// Change the selector if needed
+var $table = $('table.scroll'),
+    $bodyCells = $table.find('tbody tr:first').children(),
+    colWidth;
+
+// Adjust the width of thead cells when window resizes
+$(window).resize(function() {
+    // Get the tbody columns width array
+    colWidth = $bodyCells.map(function() {
+        return $(this).width();
+    }).get();
+    
+    // Set the width of thead columns
+    $table.find('thead tr').children().each(function(i, v) {
+        $(v).width(colWidth[i]);
+    });    
+}).resize(); // Trigger resize handler
+</script>
+</head>
+<body>
+
+<table class="scroll">
+<thead>
+<tr>
+<th>Sensors</th>
+<th>Concentration</th>
+<th>Updated</th>
+<th>Status</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ozone - LC</td>
+<td>658.228 ppm</td>
+<td>1 Hour ago</td>
+<td>Active</td>
+<td>PLOT</td>
+</tr>
+
+<tr>
+<td>Nitrogen Dioxide - LC</td>
+<td>609.082 ppm</td>
+<td>4 minutes ago</td>
+<td>Active</td>
+<td>PLOT</td>
+</tr>
+
+<tr>
+<td>Carbon Monoxide - LC</td>
+<td>650.171 ppm</td>
+<td>4 minutes ago</td>
+<td>Active</td>
+<td>PLOT</td>
+</tr>
+
+<tr>
+<td>Sulfur Dioxide - LC</td>
+<td>617.944 ppm</td>
+<td>4 minutes ago</td>
+<td>Active</td>
+<td>PLOT</td>
+</tr>
+
+
+<tr>
+<td>PID - LC</td>
+<td>68.481 ppm</td>
+<td>1 Hour ago</td>
+<td>Active</td>
+<td>PLOT</td>
+</tr>
+
+<tr>
+<td>NMHC</td>
+<td>0.000 ppm</td>
+<td>4 minutes ago</td>
+<td>Inactive</td>
+<td>PLOT</td>
+</tr>
+
+<tr>
+<td>Carbon Dioxide - LC</td>
+<td>973.242 ppm</td>
+<td>1 Hour ago</td>
+<td>Active</td>
+<td>PLOT</td>
+</tr>
+
+<tr>
+<td>Methane</td>
+<td>0.000 ppm</td>
+<td>1 Hour ago</td>
+<td>Inactive</td>
+<td>PLOT</td>
+</tr>
+
+
+<tr>
+<td>Hydrogen Sulfide</td>
+<td>616.333 ppm</td>
+<td>4 minutes ago</td>
+<td>Active</td>
+<td>PLOT</td>
+</tr>
+
+</tbody>
+
+</table>
+
+
+</body>
+</html>

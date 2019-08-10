@@ -1,0 +1,33 @@
+# Temporary Sims2.0 website developed by Serge Ayissi
+# Mainly for tests of new features and templates
+
+# Main PHP files for initialization
+/sims2/includes/php/common.php
+/sims2/includes/php/constants.php
+
+# Libraries in PHP
+/sims2/includes/php/libs
+
+# Templates
+/sims2/templates
+
+# Other include files
+/sims2/includes/
+
+# All images
+/sims2/images
+
+# Vultr Server / PHP 7.2 / Apache / Linux / MySQL
+Name: Serge1
+IP: 207.246.86.177
+FTP: root / +2Hn-MT{kW8k(hq#
+FTP: thiodene / EQ$ua.12#4
+PHPMyAdmin: phpmyadmin / EQ$ua.12
+PHPMyAdmin: root / EQ$ua.12 (?)
+
+SSH: 207.246.86.177 / Port:22 / root / +2Hn-MT{kW8k(hq#
+
+
+
+
+
